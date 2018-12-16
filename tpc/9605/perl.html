@@ -1,0 +1,330 @@
+<HTML>
+<HEAD>
+<TITLE>perl</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>perl</H1>
+<P>
+</P>
+<H2>by 
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/members.html#Woodward.Stuart">Stuart Woodward</A>
+</H2>
+<HR>
+<P>Several years ago, in <I>Algorithmica Japonica</I> we had a series of articles about the 
+programming language AWK. At that time several people were having text conversion 
+problems and someone, possibly Maynard Hogg, suggested writing small dedicated 
+programs in the language AWK to solve these problems. Several non-programmers took 
+up the challenge and started to write AWK programs. The next few months of BBS traffic 
+were infused with cryptic program examples and message traffic on how to optimize them.</P> 
+ 
+<P>I never really liked AWK probably because I spend most of my day programming in 
+other more conventional languages. AWK requires a different way of thinking to create a 
+program to solve the problem. Getting my brain around something new on top of solving 
+the problem was sometimes a bit too much like hard work.</P> 
+ 
+<P>A few years ago I would have said that most people don't need to program because 
+these days you can buy, or find, software to do almost anything that you want to do. I do 
+believe that most people though, would benefit from learning a language that they can use 
+to automate small text processing tasks. For me the language that I use, and recommend 
+to do these tasks, is Perl rather than AWK. I tend to use it most when I want to convert 
+data from one format into another.</P> 
+ 
+<P>Here is a problem and a solution to demonstrate what you can do. I must say that this 
+program is one of the first 10 programs I have written in the language Perl, so Perl 
+language lawyers and optimizers beware!</P>  
+ 
+<P>While reading e-mail, magazines, news messages, etc. I was coming across URLs, i.e 
+addresses of World Wide Web pages, that I wanted to follow up, so I started to collect 
+them in a text file. When I was using the WWW I would then cut and paste them 
+into the web browser to display the page. One night when my collection of links to look at 
+was getting quite large I thought, &quot;wouldn't it be great to be able to jump directly from the 
+links file without pasting the links in.&quot;</P> 
+ 
+<P>To do this would mean turning the links file into a HTML file, the native language of 
+the World Wide Web. Having written quite a few HTML files by hand I roughly knew 
+what to do and having recently started learning Perl I challenged myself to write a 
+program do it in Perl.</P>  
+ 
+<P>Here is my attempt:</P> 
+<P></P> 
+<PRE>
+$output_filename = "&gt;c:\\windows\\desktop\\links.htm"; 
+ 
+open(OUTPUT_FILE, $output_filename) || 
+	die "Couldn't create $output_filename"; 
+ 
+print OUTPUT_FILE 
+"&lt;html&gt;\n&lt;head&gt;\n&lt;title&gt;AutoLinks!&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n"; 
+print OUTPUT_FILE "&lt;h1&gt;AutoLinks!&lt;/h1&gt;\n"; 
+ 
+while (&lt;&gt;) { 
+	print " $_"; 
+	if(/(.*)(http:\S+)\s*(.*)/) { 
+		print OUTPUT_FILE "$1&lt;a href=\"$2\"&gt;$2&lt;/a&gt; $3&lt;p&gt; \n"; 
+	} 
+	else 
+	{ 
+		if(/\S+/) 
+		{ 
+			print OUTPUT_FILE $_ . "&lt;br&gt;\n"; 
+		} 
+	} 
+} 
+ 
+print OUTPUT_FILE "&lt;/body&gt;\n&lt;/html&gt;\n";
+</PRE> 
+<P></P>
+<P>If you are not familiar with HTML to understand what we are trying to achieve you 
+need to see the data before and after it has been processed by the perl script.</P> 
+ 
+<P>The original text file looks like this:</P> 
+<P></P>
+<PRE>
+The lotus home page http://www.lotus.com
+</PRE> 
+<P></P>
+<P>To make it into an HTML file readable by Netscape etc. we need to format it like this:</P> 
+<P></P> 
+<PRE>
+&lt;html&gt; 
+&lt;head&gt; 
+&lt;title&gt;AutoLinks!&lt;/title&gt; 
+&lt;/head&gt; 
+&lt;body&gt; 
+&lt;h1&gt;AutoLinks!&lt;/h1&gt; 
+The lotus home page  
+&lt;a href="http://www.lotus.com"&gt;http://www.lotus.com&lt;/a&gt;&lt;p&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;
+</PRE> 
+<P></P>
+<P>Now I will go through the program line by line so that you can see what is going on.</P> 
+<P></P>
+<PRE>
+$output_filename = "&gt;c:\\windows\\desktop\\links.htm";
+</PRE> 
+<P></P> 
+<P>This line just creates a filename for the output text, which in our case is HTML.  It is 
+not necessary to separate the naming of the file from the function call to open the file but I 
+like to write my programs in a self documenting form. Points to note are that output 
+filenames are signified by starting the filename with a '&gt;', also backslashes need to be 
+doubled to avoid them being treated as special characters within the string. This file is 
+made on the Windows 95 desktop so that the file of links is always readily available. The 
+&quot;Desktop,&quot; in case you haven't already realized, is just another normal subdirectory under 
+the main Windows directory.</P> 
+<P></P> 
+<PRE>
+open(OUTPUT_FILE, $output_filename) || 
+	die "Couldn't create $output_filename";
+</PRE> 
+<P></P>
+<P>In English this line should be read, &quot;open the output file, creating a file handle 
+<B>OUTPUT_FILE</B>, OR if you can't do that <B>die</B> (i.e stop running) printing out a message 
+telling what is wrong.&quot; This is a typical perl idiom. It relies on the boolean logic principle 
+that when evaluating an OR operator (written <B>'||'</B>) , if the left hand side of the OR is 
+true the computer doesn't even need to evaluate the right hand side. It already knows that 
+the statement is true. So in the line above the die command is only run if the open fails. 
+This is just a shorthand to avoid using a <B>if()</B> statement.</P> 
+<P></P> 
+ 
+<PRE>
+print OUTPUT_FILE  
+"&lt;html&gt;\n&lt;head&gt;\n&lt;title&gt;AutoLinks!&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n"; 
+print OUTPUT_FILE "&lt;h1&gt;AutoLinks!&lt;/h1&gt;\n";
+</PRE> 
+<P></P> 
+<P>The output file is now ready to write to, in the lines above we set up the header and the 
+title sections that are required for well behaved HTML files. Perl uses <B>'\n'</B> to signify a 
+new line. Unlike the C language , the print statement doesn't require brackets to 
+surround it and if the file handle <B>OUTPUT_FILE</B> is omitted <B>print</B> prints to the screen.</P> 
+<P></P>
+<PRE>
+while (&lt;&gt;) {
+</PRE> 
+<P></P> 
+<P>Most high level languages have a <B>while</B> statement that executes something &quot;while&quot; 
+something is true, but Perl has a really nice shortcut built in to help when processing files. 
+Inside the parentheses above, the &lt;&gt; means &quot;Try to read a line from the file that is 
+mentioned on the command line. If you can, assign it to the string <B>$_</B> and return true, if 
+you can't return false.&quot; So this while loop will go through the whole of the input file 
+processing each line. If you are wondering which file is being read here, it is the file full of 
+text which contains the links. To understand why, wait for the explanation of the Perl 
+command line which comes later.</P> 
+<P></P> 
+<PRE>
+print " $_";
+</PRE> 
+<P></P> 
+<P>This is easy. Print the current line being read, known by the shorthand symbol <B>$_</B>, to 
+the screen to keep the user amused. Probably pointless as the program runs in less than a 
+half a second!!</P> 
+<P></P> 
+<PRE>
+if(/(.*)(http:\S+)\s*(.*)/) {
+</PRE> 
+<P></P> 
+<P>This is not easy. This cryptic line is the heart of the whole program does two things. It 
+recognizes lines with a web link in them and chops up the line into separate parts known 
+as <B>$1,$2</B> etc. ready for processing. The search operator <B>/something/</B> returns true if 
+the &quot;something&quot; is found.  In the above line we are looking for four types of text.</P> 
+<P></P> 
+<PRE>
+	<I>Arbitrary text</I>		signified by a  '.' (period) which can be anything 
+	<I>Specific text</I>		that must be exactly matched in our case 'http:' 
+	<I>Non-Space text</I>		signified by a  '\S', anything except spaces, tabs and newlines 
+	<I>Space text</I>		signified by a  '\s', spaces, tabs and newlines
+</PRE>
+<P></P>
+<P>We are also looking for various combinations of the above text types on our line.</P>  
+<P></P> 
+<PRE>
+<I>Zero or more characters</I> of the type of character preceding the postfix  '*' 
+<I>One or more characters</I> of the type of character preceding the postfix  '+'
+</PRE> 
+<P></P>
+<P>The pattern we are looking for is quite complicated. For example when the the 
+following line:</P> 
+ 
+<P><B>This is an interesting link: http://www2.gol.com/users/stuart/r.html  You might like to 
+check it out.</B></P> 
+ 
+<P>is processed it is broken up as follows:</P> 
+
+<TABLE BORDER=1>
+<TR>
+<TD><B>Some text</B></TD>
+<TD><B>followed by a Web link</B></TD>
+<TD><B>spaces</B></TD>
+<TD><B>some more text</B></TD>
+</TR>
+<TR>
+<TD>This is an interesting link:</TD>
+<TD>http://www2.gol.com/users/stuart/r.html</TD>
+<TD> </TD>
+<TD>You might like to check it out</TD>
+</TR>
+<TR>
+<TD>$1=(.*)</TD>
+<TD>$2=(http:\S+)</TD>
+<TD>\s*</TD>
+<TD>$3=(.*)\</TD>
+</TR>
+<TR>
+<TD>Zero or more arbitrary<BR> characters</TD>
+<TD>Followed by http:\ followed by some<BR> non-space characters.</TD>
+<TD>Zero or more spaces</TD>
+<TD>Zero or more arbitrary characters<BR> until the end of the line.</TD>
+</TR>
+</TABLE>
+
+<P>The parentheses indicate that we want to keep the text inside them for later use and 
+these fragments, when found, are automatically assigned in order to the variables <B>$1, $2, 
+$3</B>, etc.</P>  
+<P></P> 
+<PRE>
+	print OUTPUT_FILE "$1&lt;a href=\"$2\"&gt;$2&lt;/a&gt; $3&lt;p&gt; \n";
+</PRE> 
+<P></P> 
+<P> The above line uses the the fragments of the text that were found and recreates the line 
+to include a HTML link to the URL mentioned in the text. Since the search operator 
+<B>/(.*)(http:\S+)\s*(.*)/</B> was the test condition of the <B>if()</B> statement, the above 
+line is executed only when the test is true, i.e a line which looks like it had a link in it was 
+found. In the final document any links to World Wide Web pages will now be highlighted 
+when the output file is viewed under Netscape and the user will be able to click on the 
+links to see the document that they link to.</P> 
+<P></P>
+<PRE>
+	} 
+	else 
+	{ 
+		if(/\S+/) 
+		{ 
+			print OUTPUT_FILE $_ . "&lt;br&gt;\n"; 
+		} 
+	} 
+</PRE>
+<P></P> 
+<P>This part finishes off the <B>if()</B> statement the else part is only run if the line didn't contain a 
+link. This statement contains another search for lines which contain 1 or more non space 
+characters <B>' \S+'</B> and prints them out, effectively filtering out, and thus not printing lines, 
+which have no text. <B>$_</B> is a shorthand for the current line we are looking at and it is the 
+unwritten default for many operators including the search operator that we have been 
+using.</P> 
+<P></P>
+<PRE>
+} 
+ 
+print OUTPUT_FILE "&lt;/body&gt;\n&lt;/html&gt;\n";
+</PRE> 
+<P></P> 
+<P>The final brace ends the while loop and here we print to the output files the &quot;end of 
+body&quot; and &quot;end of document&quot; codes that terminate an HTML file.</P> 
+ 
+<P>Finally to run this text to HTML converter we need to make a DOS batch file.</P> 
+<P></P> 
+<PRE>
+	perl txt2web.pl C:\WIN_APPS\INTERNET\HTTP.TXT
+</PRE> 
+<P></P>
+<P>I always want to convert the same text file so I have have hard coded the input 
+filename in the batch file. Perl scripts, by default, take the name of the input file as the first 
+argument after the name of the perl script itself. The above batchfile runs the txt2web.pl, 
+the program we have created with the default input file:</P> 
+ 
+<P><PRE>C:\WIN_APPS\INTERNET\HTTP.TXT</PRE></P>
+ 
+<P>As with most programming languages, perl may look very daunting the first time you 
+encounter it. If you can master opening and closing files, searching for patterns and 
+writing to files you can easily create some very sophisticated programs to manage text 
+files. One of perl's motto is that you can write a perl program in many different ways. If 
+you posted the above program on the Internet perl Conference you would get no end of 
+comments and criticism, for free, on making the script better...</P> 
+ 
+ 
+<H3>Recommended books:</H3> 
+ 
+<P>
+<I>Programming Perl</I><BR>
+Larry Wall &amp; Randal L. Shwartz<BR>
+<A HREF="http://www.ora.com/">O'Reilly &amp; Associates, Inc.</A><BR>
+ISBN 0-937175-64-1<BR>
+ 
+<P>Known as the <I>Camel Book</I>, this is the manual co-authored by the 
+creator of perl, Larry Wall.</P> 
+
+<P>
+<I>Learning Perl</I><BR> 
+Randal L. Schwartz<BR>
+<A HREF="http://www.ora.com/">O'Reilly &amp; Associates, Inc.</A><BR>
+ISBN 1-56592-042-2<BR>
+
+<P>An easy introduction to Perl. I bought both books at the same 
+time and found it useful to refer to <I>Programming Perl</I> 
+while reading through <I>Learning Perl</I>.</P> 
+ 
+<H3>Internet Links</H3> 
+ 
+<P><A HREF="http://www.perl.com">http://www.perl.com</A></P> 
+ 
+<P>Various links to information including frequently asked questions, and online 
+manual and links to perl implementations for nearly every platform that you 
+can imagine.</P> 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>May 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

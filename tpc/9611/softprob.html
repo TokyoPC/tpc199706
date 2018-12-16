@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Software Design</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Software Design</H1>
+<P>
+</P>
+<H2>by Darren Cook</H2>
+<HR>
+<P>Have you ever used — or maybe I should say tried to use — a piece of software, and got frustrated and angry because you could not get it to do what you wanted? If not, you are perhaps unique. Probably you end up swearing, &quot;You stupid machine!&quot; (or maybe even something stronger, depending on your temperament, and a whole range of environmental factors that fascinate clinical psychologists), and then some friend or work companion comes over and says, &quot;You know, a bad workman always blames his tools.&quot;</P> 
+
+<P>Well, I think in many cases the software is to blame. Ideal software should be able to do the job it is designed for, without requiring you to read a thick manual first. It is very difficult to balance software power and complexity against ease of use, but I feel much of the software I use today could be better. Of course, sometimes software surprises me with how easy it is to do something, or how it very conveniently tells me some piece of information just when I need it.</P> 
+
+<P>I work as a software designer and programmer, and am very interested to hear what other people think about these issues. Getting the user interface right is the most difficult part of most software projects. I am especially interested in the application of artificial intelligence to the user interface.</P> 
+
+<P>So, if you have some complaint or compliment about a piece of software you use (or you want to disagree with someone else's opinion), send it in (either to me directly, or to Mike, the newsletter editor). Don't wait for the next deadline — send me that e-mail now! It can be any length, from a couple of sentences to a few paragraphs or more. When moaning, try and be constructive. Don't just say &quot;I hate Excel,&quot; or &quot;I hate Excel 'cos <A HREF="http://www.microsoft.com/">Microsoft</A> makes it, and I think Word sucks as well.&quot; Ideas about how it could be better are much more interesting, e.g. &quot;I have to use Excel 8 hours every day, and I'd feel more cheerful if the menu options were more colorful, and I could put a picture of Snuffles, my pet cat, in the toolbar.&quot;</P> 
+
+<P>I've got a few  complaints, and a few compliments to start the ball rolling...</P> 
+
+<P><I>(Send your comments to darren@factcomm.co.jp, or Darren Cook on the BBS, or see the end of this page for a link to the Editor).</I></P> 
+ 
+<H3>Icons and Hints</H3> 
+
+<P>I hate icons. Judging by the way modern software products fill half the screen with them, I must be in the minority. The reason I hate them is that I can never work out what they are supposed to mean. &quot;A picture is worth a thousand words&quot; but these little 16 by 16 dot images are not big enough to count as pictures! It gets worse when you try and port your software to a different culture.</P> 
+
+<P>E.g. I am writing this in WordPad on Japanese Windows 95. Next to the font selection are three icons each with a single letter: B, I and U. Very logical if you speak English — bold, italic and underline. However the Japanese for these terms are futoji, shatai and kasen, so should they be F, S and K in the Japanese version? Or maybe in katakana?</P> 
+
+<P>This can all get very messy. But the saviour of icons, in my opinion, are the hints. When I do not know what the icon means, or I think I know, but I want to check, I point the mouse at it. Up comes a little box saying what that icon does, and in more detail in the status bar at the bottom of the screen.</P> 
+
+<P>(As an aside, the Visual C++ compiler (and maybe Visual Basic as well?) makes this feature very easy to add to programs).</P> 
+ 
+<H3><A HREF="http://www.corel.ca/">Corel</A> Photopaint</H3> 
+
+<P>I tend to use this program a lot. One of the main things I use it for is converting file formats — BMP or TIFF to GIF or JPEG, or 24-bit BMP to 8-bit BMP, etc. I am not a graphic designer, but sometimes I need to touch up images that the graphic designer gives me. I find the way I can choose any magnification, and still have all the tools available, to be very useful. There is even an option to have it fit to the size of the window.</P> 
+
+<P>My complaint is that it never seems to learn what I am doing. For instance, I may have 15 files, and I need to reduce each of them from 24-bit to 8-bit, using what is called the optimum palette (this means it will choose the 256 colors best suited for this image). I then want to save the 8-bit versions in a different directory.</P> 
+
+<P>I open up file manager, and select the 15 original files, and then drag them on to the Photopaint window. It loads all of them. This is very cool, and saves me a lot of fiddling around with dialog boxes.</P> 
+
+<P>I select the first image, and then choose 'reduce to 8-bit' from the menu. A dialog box comes up, that asks me if I want to reduce the colors with the uniform or optimum palette. It has chosen uniform as the default, so I change it to optimum. The other defaults are fine, so I click OK. It then create the new image, calling it NEW1.CPT or something. CPT is the internal format. I choose SaveAs, and have to find my new directory, then change the file type to be Windows bitmap, then type the file name (which is the same as the original file). Finally I click OK.</P> 
+
+<P>I choose the next file. The Reduce Colors dialog box comes up again, and it has chosen uniform as the default again! Why didn't it keep my last settings?!!! By the 15th file it is driving me crazy. But worse is yet to come. It has called this file NEW2.CPT. I click Save As, and have to change the directory, file type and file name again. Okay, it would have to be fairly clever to have realized I wanted the same filename as the original, but why did it change the directory and file type back to its defaults again?!!! I am swearing at it well before the 15th file.</P>  
+   
+<P>Deciding between resetting the dialog box each time, and remembering the last settings is a design issue. Sometimes it makes sense to reset each time, but I've used software that does it both ways, and generally if it remembers the last settings I never complain. Say in the middle of that batch of 15 files, I saved another file in a different directory. When I do my next file from the batch, I have to change the directory back, but only once. Also, this is not the way people work - they do things in batches whenever they can.</P> 
+ 
+<H3>Atama ga ii Word </H3>
+
+<P>This compliment comes from my wife. She was using Word, typing in a list of things. She had typed &quot;1. Blah, blah blah,&quot; and then pressed Return. She screamed with delight because it had automatically started the next line with &quot;2.&quot; for her. &quot;Sugoi atama ga ii&quot; was her compliment. I think it made her day.</P> 
+ 
+<H3>Atama ga warui Excel</H3> 
+
+<P>But on the other hand, too much intelligence can sometimes be a bad thing. A few months ago I had to use Excel (I hate this piece of software more than any other) to edit a file, then save it in DBase4 (DBF) format. I wanted a certain field to be saved as a left-aligned character field, even when it only contains numbers. But, instead of asking, or even allowing you to override its decision, it has this smug, little 'I know best' attitude.</P> 
+
+<P>What it does, I eventually realized after hours of frustration, was look at the first record to decide. If the first record had at least one letter in this particular field, it saved it correctly. If the first record only has numbers, it thinks it is a number field and right-aligns the data. To add to the frustration, it does not right-align it on screen — I could not realize the damage it had done unless I closed the file, and reopened it! </P>
+
+<P>Highlighting that column, and telling it to be left-justified, just before I save it, did not work. The design principle that Excel is not following here is: if the software is going to act intelligently, make sure the user can override any decision it makes, unless you are confident you are always right.</P> 
+
+<P>The only way I could get round this was to put an extra letter in this column in record 1, and save it. I then had to start up Visual DBase (which is almost as bad as Excel), remove the extra letter from record 1, save it back to disk, and shut down Visual DBase.</P> 
+
+<P>After this ordeal, I relaxed by imagining creative ways of killing the Excel programming team. I am thinking of buying a dartboard, and some Bill Gates photos, to help get me through those Excel Moments.</P> 
+ 
+<H3>Only one way in...</H3> 
+
+<P>My last complaint is about that great saviour of mankind (well apparently anyway), Windows 95. As I said before, I am using WordPad to write this. I saved it in RTF format. When I came back to carry on, I double-clicked it. Microsoft Word started up. Aaarrgghhh!!! It had messed up all the formatting for some reason, and I would prefer to use WordPad for my RTF files (I don't like Word because I cannot get it to do simple things without reading the manual, which I do not want to do, and I do not need its extra features). </P>
+
+<P>In Windows 3.1 I knew how to use File Manager to change this, by highlighting the file, then choosing an option from the File menu. So the first thing I tried was highlighting the filename in a My Computer window, and looking at the File menu. Nope — the option has gone. Next I tried right-clicking the filename. The pop-up menu is the same as the File menu. I selected Properties. Fascinating information, but no way to change the program it starts.</P>
+
+<P>So, next I tried the Control Panel. I opened up two or three promising choices, but none had the ability to help me. I tried double-clicking the desktop, then right-clicking the desktop. There is a properties option in the pop-up menu. &quot;Ah-ah! Got ya!,&quot; I gleefully exclaimed. Nope — not there.</P> 
+
+<P>Next I tried screaming at the monitor. Nope — it still opened up Word. I tried cursing Bill Gates. I guess he keeps his sexual ability private, so we may never know if it worked... I tried right-clicking the task bar, and found some very interesting stuff, but still no way to do what I wanted to do.</P> 
+
+<P>Eventually I found it! Open up a My Computer Window, View menu, Options. Choose File types, scroll down until you find RTF files, and delete it. Then go back to your original file, and double-click it. It now asks what program you want to use to open RTF files. I select Word Pad, and become a happy man again.</P> 
+
+<P>Microsoft made two mistakes (IMHO). Firstly they removed a useful option for no apparent gain. What I could once do in a single-step now requires two steps. That menu option in Windows 3.1 was doing no harm. Why remove it? Secondly, there is only one way to do what I want to do. Looking back at what I did, up to where I started screaming and cursing, I think I was being rational. When I right-clicked the filename, and chose properties, there should have been an option in there to change the program that RTF files launch. For any function, think about how different users would try and do it. When possible, put as many of these in as possible. If you only put it in once, make sure that everyone will think it is natural.</P>
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>November 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

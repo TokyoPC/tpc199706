@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<TITLE>MSDOS.SYS Editing</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Windows 95 MSDOS.SYS Editing</H1>
+<P>
+</P>
+<H2>by <A HREF="mailto:arai@saed.tmg.nec.co.jp">Masayo Arai</A></H2>
+<HR>
+<P>I cannot resist peeping into hidden files and checking what they are for.  Sometimes I delete them and see how the system behaves.  In this issue, I will show you how to stop loading the Windows 95 logo and how to make Windows 95 display the Windows 95 Startup Menu when you start <A HREF="http://www.microsoft.com/windows/">Windows 95</A>.</P> 
+ 
+<P>After I installed Windows 95, I found that Windows 95 Setup copied many hidden files on the drive C: root directory.  One of the hidden files is MSDOS.SYS.  The same named file had been a binary file and one of the system files to start MS-DOS up to version 6.  MSDOS.SYS for Windows 95 unlike those so far is a text file.  It seems that Windows 95 uses this file as one of the parameter saving files to be examined when Windows 95 starts up.</P> 
+ 
+<P>Even though the MSDOS.SYS for Windows 95 is a simple text file, Windows 95 hides 
+MSDOS.SYS from users by adding the &quot;hidden&quot; attribute.   The file is also a read only system file.  I changed the attributes and played with editing this file by changing drive names and path names.  I found how to start Windows 95 from floppy disk.  If there is anyone who wants to know how to make a Windows 95 start up floppy (boot) disk I will write how in a later issue.</P> 
+ 
+<P>The original MSDOS.SYS contains text similar to the following.  Many meaningless comment 
+lines are included to make the file length larger than a certain number of bytes as the first two comment lines say.</P> 
+ 
+<H3>List 1: The original MSDOS.SYS file contents as Windows 95 Setup creates it</H3> 
+ 
+<PRE>
+[Paths] 
+UninstallDir=C:\ 
+WinDir=C:\WIN95 
+WinBootDir=C:\WIN95 
+HostWinBootDrv=C 
+ 
+[Options] 
+BootGUI=1 
+Network=1 
+; 
+;The following lines are required for compatibility with other programs. 
+;Do not remove them (MSDOS.SYS needs to be >1024 bytes). 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxb 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxe 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxf 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxg 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxh 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxj 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxk 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxm 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxn 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxp 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxq 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxs 
+</PRE>
+<P>I don't need the Windows 95 startup blue sky logo.  It hides the messages behind it when 
+commands in CONFIG.SYS and AUTOEXEC.BAT are executed.  Sometime, I miss important 
+error messages because of the blue sky logo.  With information I got from one of my friends, I edited MSDOS.SYS to make Windows 95 not to load the logo, and to display the boot selection menu in a specified length of time.  The boot menu is not displayed as the default MSDOS.SYS setting.  If you want it, you have to press the F8 key while the message &quot;Starting Windows 95...&quot; is displayed (on some systems this message is displayed for a very short time).  It's convenient to make the boot menu always available for a few second for someone like me.  I sometimes want to start in DOS mode or in step by step CONFIG.SYS and AUTOEXEC.BAT proceeding mode.</P> 
+ 
+<P>I tried several times to change the attributes of MSDOS.SYS under Windows 95 or Windows 
+95 DOS mode, but R/O, Hidden, and System attributes cannot be changed.  Win95 DOS mode 
+stalled when I attempted to change the attributes.</P> 
+ 
+<P>The following is how to edit MSDOS.SYS.  You need an MS-DOS boot up floppy disk, 
+the ATTRIB command, and a text editor:</P> 
+ 
+ 
+   <OL>
+   <LI>Choose desired Windows 95 from the System Commander menu. 
+   On my PC, three versions of Windows (3.1, 95 Japanese, and 95 English) and three 
+   versions of MS-DOS are installed on drive C:.  They are switchable by System 
+   Commander.  If you are using only one version of Windows 95, skip steps 1 and 2. 
+   	 
+   <LI>Exit Win95. 
+    
+   <LI>Start DOS from drive A:.  (I used DOS 6.22.) 
+    
+   <LI>Use Norton Utility or any similar disk utility to change the MSDOS.SYS file attribute so as for it not to be hidden, not R/O, and not a System file.  If you do not have any disk utility, you can use the DOS ATTRIB command.  Use the same version of ATTRIB as the DOS version you started in the previous step.  To use the ATTRIB command type the 
+  following: 
+    <PRE>
+	attrib -r -s -h c:\msdos.sys
+    </PRE> 
+    
+   <LI>Edit and save the MSDOS.SYS file.  I added the following lines under [Options] section.  The comment lines are not needed. 
+    <PRE>
+   	BootMenu=1 			 
+   	;	To display the boot menu (default is 0) 
+   	; 
+   	BootMenuDelay=3  
+   	;	Display boot menu for 3 seconds 
+   	; 
+   	Logo=0  
+   	;	Not to display the blue sky Windows 95 Logo (default is 1) 
+    </PRE>
+   <LI>I don't know what kind of program wants the ;xxxxxxxx comment lines, but anyway left them as Microsoft warns. 
+    
+   <LI>Restore the file attributes using Norton Utility or any disk utility. 
+    
+  	<P>By using ATTRIB, execute the following:</P> 
+   
+   <P><PRE>
+	attrib +r +h +s c:\msdos.sys
+   </PRE></P> 
+    
+   <LI>Restart the PC from C: and start the Win95 for whose MSDOS.SYS you just edited.  If 
+   you are using only one Windows 95, just let it start. 
+   <P>The logo is not displayed and you will see the boot menu for the length of time you specified.</P>
+</OL>   
+ 
+<P>The following is one of the  MSDOS.SYS files I'm using.  As I do not have any intention to use Windows 95's uninstall function, I also deleted the Windows 95 uninstall data file from C:\ and the UninstallDir= line from the MSDOS.SYS.  Off course I will uninstall Windows 95 by myself when I want to delete it.</P> 
+ 
+ 
+<H3>List 2: My MSDOS.SYS</H3>  
+<PRE> 
+[Paths] 
+WinDir=C:\WIN95.JAP 
+WinBootDir=C:\WIN95.JAP 
+HostWinBootDrv=C 
+ 
+[Options] 
+BootMulti=1 
+BootGUI=1 
+Network=1 
+Bootmenu=1 
+BootMenuDelay=3 
+Logo=0 
+; 
+;The following lines are required for compatibility with other programs. 
+;Do not remove them (MSDOS.SYS needs to be >1024 bytes). 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxb 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxe 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxf 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxg 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxh 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxi 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxj 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxk 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxl 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxm 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxn 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxp 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxq 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxr 
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxs 
+ </PRE>
+<P>Easy, right?</P> 
+ 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>August 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

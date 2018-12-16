@@ -1,0 +1,311 @@
+<HTML>
+<HEAD>
+<TITLE>Hard Disk Crash!</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Hard Disk Crash!</H1>
+<P>
+<H2>by Ben Sherman</H2>
+<HR>
+<P>My hard disk crashed recently.  I want to tell you what happened and what I 
+learned that can benefit you.</P>   
+ 
+<P>At home I have a <A HREF="http://www.intel.com/">Pentium</A> 90 MHz IBM-compatible computer that I use for much of my work.  
+In December I started getting 'lost cluster' messages every time I'd boot up the 
+computer. <A HREF="http://www.symantec.com/">Norton Utilities</A> would automatically scan my hard disk for viruses and other 
+unwanted problems. One of  the problems it would detect was lost clusters.  I would opt 
+to fix them, then I would start running Windows and Word, and all the other stuff I 
+use on a regular  basis. A month later I started to get other error messages.  Some 
+of them I could understand, some of them meant nothing to me. I received 
+<B>&quot;Failure on INT 24&quot;</B> several times, 
+<B>&quot;expanded memory not present or not usable&quot;</B> once 
+or twice, and  then more ominous messages like <B>&quot;This application has violated system 
+integrity due to an invalid page fault and will be terminated.  Quit all applications, 
+quit Windows, and then restart your computer.&quot;</B> At least the last one I could read. 
+I  didn't know what an invalid page fault was, but I did know how to follow the 
+advice and restart the computer.</P> 
+  
+<P>Okay, so something was up. I thought about viruses. I rarely received diskettes 
+from anywhere, or anyone. I had not installed any new software, except for a 
+game or two from the TPC BBS, so I was pretty certain it wasn't a virus. Nonetheless, 
+I used the MS-AntiVirus software that comes in DOS, 
+the <A HREF="http://www.mcafee.com/">McAfee Scandisk</A> software, 
+and some software from <A HREF="http://www.ibm.com/">IBM</A>. All of it came up blank. 
+&quot;No virus detected.&quot;</P> 
+ 
+<P>I suddenly had this strange feeling, like, &quot;better back up all your papers NOW Ben&quot;. 
+I have learned to follow gut feelings, especially with illogical things like my 
+computer. So I formatted a few floppy disks and started to 
+use <A HREF="http://www.pkware.com/">Pkzip</A> to zip 
+up all  the files I wrote that I did not want to lose. This meant going into 
+File Manager and then into Word and going through all my directories one at a 
+time, zipping the files up and transferring them to floppies. This took about an 
+hour. This was added insurance to supplement the files I already had backed up the 
+previous week on my <A HREF="http://www.hp.com/">Colorado</A> Travan tape 
+drive. I thought to myself &quot;what happens if the tape drive doesn't work? I can 
+always reinstall the software, but if I lose all my letters, research papers, 
+student grades, artwork, scanned newspaper articles, etc. I will really be in 
+trouble.&quot; Sure enough, just as I finished zipping the last of the irreplaceable 
+files onto the fifth floppy, my hard disk crashed.</P> 
+ 
+<P>First I tried the Norton Utilities Rescue disk, and received the 
+following message:</P> 
+ 
+<P><B>&quot;Sector not found reading drive C:<BR> 
+Abort, Retry, Ignore, Fail?&quot;</B></P> 
+ 
+<P>I chose &quot;Fail&quot; which then brought me out of Windows to DOS and to the 
+following message:</P> 
+ 
+<P><B>&quot;error estOO10: physical EOF before logical EOF on . RTL.<BR> 
+Invalid command.com<BR> 
+Cannot load command.co<BR>  
+system halted.&quot;</B></P> 
+ 
+<P>Uh oh. I was never into est myself, but I could understand &quot;invalid command.com.&quot; 
+That last one meant that when I tried to restart my computer, it wasn't going to. 
+Which it didn't. I pulled out my emergency DOS boot disk, inserted it into 
+drive A:, and booted up. This worked, but when I tried to get to drive C: I 
+received the following message:</P> 
+ 
+<P><B>&quot;invalid media type reading drive C: abort, retry, fail?&quot;</B></P> 
+ 
+<P>Big time uh-oh. Back to Norton Utilities. I booted up again with their 
+Rescue Utilities and started using their various rescue programs. Unerase found 
+lots of  gobbledygook, all of it looking like extended ASCII characters. Unformat 
+was able to rescue 2 clusters out of 1.2 gigabytes. So much for &quot;rescuing my  
+programs.&quot; I called around to a few computer genius-types who I considered 
+higher up the ladder of enlightenment than myself. People listened and 
+gave their advice. 
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/members.html#Ryan.Kevin">Kevin Ryan</A>
+ said that the FAT errors I had gotten earlier 
+indicated that I would have to repartition my hard disk.</P> 
+ 
+<P>I have had enough experience with computers to realize that I had two 
+choices: either agonize over all the various ways to get my computer up and 
+running, try all my friends' computer folk remedies, and spend days or weeks in 
+the process, or I could do a surgical strike. This is often the quickest and 
+easiest thing to do. It involved reformatting my hard disk and losing what data 
+was not backed up. I opted for the strike. I reformatted the disk, reinstalled 
+Windows, and then restored my backed up programs using the Colorado tape drive. 
+This took about four hours. Everything seemed to work.</P> 
+ 
+<P>I got back on the BBS downloaded my e-mail, wrote some replies, and then the 
+computer crashed again. Okay, repeat virus checks. Repeat DOS Scandisk. Ah-ha! 
+Something new here. My newly reformatted hard disk seems to have more than 
+730 megabytes of bad sectors. Now why did MS-DOS knowingly format bad sectors? 
+Beats me. But this means that much of the information that resides on those bad 
+sectors is probably corrupted. I need to change the hard disk. But I also need the 
+computer.</P>  
+
+<P>Actually this happened the week before final exams at my school, meaning that I 
+really, really needed the computer. So, what the heck, another surgical strike. 
+But this time I had learned something: DOS does not recognize bad sectors during 
+the format process. The labeling of bad sectors during the formatting process 
+seems like common sense to a lay user like myself. Why should an operating system 
+be able to format bad sectors? I had believed that the formatting process fixed 
+bad sectors. I guess not.</P> 
+ 
+<P>Norton Utilities has a program called Disk Doctor that will check the surface 
+of the hard disk and diagnose bad sectors. Microsoft Scandisk seems to be the 
+same kind of program. The reason I prefer the Norton is because it has an 
+&quot;automatic mark bad sector&quot; option. With my hard disk of 1.2 gigabytes, this 
+means that I don't have to sit in front of the computer and continually press 
+the Enter key for every one of the bad sectors that comprise the more than 
+730 megabytes of bad sector space on my hard disk. That's a useful option.</P> 
+ 
+<P>Okay, reformat, part two. This time I did it differently. I used MS-DOS to 
+reformat the hard disk. Then I installed the Norton Utilities and used the 
+above-mentioned Disk Doctor to check the surface of the disk. Whammo! It marked 
+the same 730 megabytes of hard disk as bad sectors. With the bad sectors marked 
+so that data could not be written to them, I installed Windows, Office, and my 
+other software. Then I restored what I wanted from my tape drive. Next, I set 
+up all the directories the way I wanted them to be. This entire process took the 
+better part of a Sunday, but by evening I was up and running again.</P> 
+  
+<P>What I learned that you can do:</P> 
+ 
+<H3>1. Back everything up</H3> 
+
+<P>Get into the habit of backing everything up religiously. This involves two actions 
+on your part. One, buying a tape or MO back-up device, and two, actually using 
+it on a scheduled basis. I have a Colorado Travan tape drive. I purchased it at a 
+computer store in the United States and brought it back with me last summer. 
+It can store 400 megabytes of uncompressed data or almost 800 megabytes compressed. 
+It cost under $200. It is an internal device. I had to install it myself, and I am 
+not joking when I say that it came with the best instructions I have ever seen. 
+Installation was painless. I would buy another one in a minute. You should buy one 
+that can hold at least 500 megabytes compressed. It came with its own software 
+which was also very self-explanatory.</P> 
+ 
+<P>The problem is using it regularly. Because there is no immediate gratification, 
+I suspect I am like many other people who make a few backups, and then quickly 
+fall out of the habit. You have to view it as life insurance you can use. You buy 
+life insurance because you have to protect your family. You know you need to buy 
+the best, but you also know that you yourself will never benefit. A back-up device 
+is much the same. You buy it because you have to protect your data. However, when 
+your hard disk crashes, you yourself will benefit. Therefore, you have to push 
+yourself to use the back-up device, if not every day, then at least once a week.</P> 
+ 
+<P>Remember that when you begin to see frequent error messages, or when the 
+Norton Utilities begins to report &quot;lost clusters&quot; you should get the hint that 
+something is wrong somewhere and that your chances of computer failure are 
+increasing. This is the time that you want to make a special backup of all very  
+important files on floppy disks, just in case your tape drive fails.</P> 
+ 
+<H3>2. Make a soft box.</H3> 
+
+<P>This is what I call the box where I store my original installation diskettes. This 
+box also holds the corresponding installation manuals and other odds-and-ends. Mine 
+has the following essential diskettes and manuals: DOS, Windows, my CD-ROM driver 
+diskette, my mouse driver diskette, my video card diskettes, my Norton Utilities 
+diskettes, the Colorado tape drive software and my communications software. It 
+also contains my motherboard manual, and receipt for my computer. The rest of the 
+software diskettes lie in computer diskette boxes under one of my tables. Most 
+of the manuals lie on a bookshelf.</P>  
+
+<P>Print out all important files, meaning your <B>autoexec.bat</B>, <B>config.sys</B>, 
+<B>win.ini</B>, and <B>sys.ini</B> files.  Put the date on the printout and put it 
+into the soft box.</P> 
+ 
+<H3>3. Use Print Screen</H3> 
+
+<P>Record some information about how your desktop is set up in case you have to 
+reinstall. For example, suppose I want to record all the names of all the 
+directories on my hard disk. An easy way to do this is to open File Manager and 
+then press the &quot;Print Screen&quot; button on your keyboard. Next, open the Paintbrush  
+program. Under Edit, select &quot;Paste&quot; and then under File, select &quot;Print.&quot; This will 
+print a picture of your screen showing your File Manager with all of its 
+directories. Do the same with Program Manager. Put these two papers into your 
+soft box.</P> 
+ 
+<H3>4. Buy original software.</H3> 
+
+<P>There are several reasons I mention this. Unless you have money to spare, you 
+probably have several pirated programs residing on your hard disk. You got them 
+from a friend, from the office, or from Hong Kong or Thailand. You probably don't 
+have the manuals. The quality of original diskettes is usually superior to that 
+of copied ones. When you use originals, you know that all the files exist on the 
+disk, and if they don't, you can easily receive replacements. With pirated copies, 
+you never know if you have all the files you need. When your hard disk fails, you 
+want your software to install painlessly. Copied installation diskettes often fail 
+for reasons I won't discuss here.</P> 
+ 
+<P>One of the other nice advantages of original software is that you get the manuals. 
+Space consuming as they are, a manual will tell you how to do things that might 
+not be intuitive just from looking at the screen. Often a program will have short-cut 
+keys that will be described in the manual. A manual is a reference book. It may not 
+be terribly lucid sometimes, but it is all written down on paper. It doesn't crash, 
+nor does it require electricity to read.</P> 
+  
+<P>By far the best reason for buying original software are the help-lines maintained 
+by the software companies. In the past, you could call up a company, tell them you 
+were using their software and ask for help. Now, companies are cutting costs and 
+technical support. They expect you to have proof of ownership, as in a registration 
+number on hand when you call them.  I advise copying the registration number onto 
+the front of your first installation diskette, and onto the front cover of your 
+manuals. You don't want to be fumbling in the bottom of your closet or through the 
+mess in your desk drawers for a number on a card that you are not even sure you 
+still have. Without that number, they will refuse to speak to you.</P> 
+ 
+<H3>5. Use a highlighter pen</H3> 
+
+<P>I also advise you to make liberal use of a highlighter marking pen. Mark up your 
+manuals. Use a marker to highlight the special options you will need to use should 
+you have to reinstall your software.</P>  
+
+<P>This came in handy for me last week when I had to reinstall my communications 
+software. There were settings that I couldn't easily remember without laboriously 
+looking them up. These included the exact type of modem I have, the technical name 
+for it, and the COM Port it was set to. There were also help-line numbers, product 
+registration numbers, and other small details that once high-lighted greatly increased 
+their accessibility.</P> 
+ 
+<H3>6. Install several virus checkers</H3> 
+
+<P>Because you usually do not know what the real cause of your problem is, software 
+or hardware failure, a virus, or simply your own mistake, the best solution is to 
+address all four systematically, one at a time. I use the virus checker that came 
+with MS-DOS, and McAfee VirusScan, and a Japanese program that someone gave me. 
+I use several because no virus checker can cover everything. I hope that they 
+complement each other. However, as prepared as I advise you to be, I think that much 
+of the hysteria over viruses is overblown in the media because it makes such 
+interesting news stories. With that said, I would like to note that in the last 
+two years I have caught and eradicated two viruses, FORM and AntiCMOS, twice each. 
+Only in a single instance was a virus on my computer, and that time it came on a 
+diskette that my wife had used at Temple University.</P> 
+ 
+<P>Computer code and viruses are involved in a symbiotic struggle: What one man can 
+invent, another man can break... which another man can then fix. You and I are the 
+users of the first and third party's products, and indirectly of the second man's 
+products, in the form of improved software.</P> 
+ 
+<H3>7. Join a computer club</H3> 
+
+<P>You need a network of knowledgeable people to access in times of trouble. A club 
+is a bank of knowledge. Sometimes you deposit information, sometimes you withdraw. 
+You cannot learn everything there is to know about computers, but by becoming 
+involved in a club, you gain access to a large number of people who together have 
+experienced most of the problems you will ever face. A club has other obvious 
+benefits including ongoing educational, social, and recreational activities. And 
+as time goes on you too will be consulted by less-experienced members.</P> 
+ 
+<H3>8. Buy a fast machine</H3> 
+
+<P>Buy as fast a machine as you can afford. At school I have a 386 computer on my desk 
+with 6 megabytes of RAM. It runs all my Windows applications slowly, but just fine. 
+I have no problems using Word, Excel, Paintbrush, or any educational software. For 
+my everyday purposes, the processor speed is not very important... how fast can I 
+really type? The problem comes when I want to install software on the 386 or on 
+its sister machines that I have set up for students in a self-access lab. The 
+installation time of DOS and Windows on a 386 is slightly over thirty minutes. 
+Multiply that by thirty machines and you start to have a major headache, even 
+without the inevitable installation problems that always crop up. I am impatient 
+about my time. I don't want to wait while the machine installs software, 
+spell-checks a document, saves to the hard disk, adds some numbers, backs up my data, 
+or performs a myriad of other functions. A fast machine with ample RAM reduces 
+the amount of time I spend waiting for the hourglass to go away.</P> 
+ 
+<P>I cannot control the speed of the machines at my school. I can only use them as a 
+benchmark for comparison with my home Pentium (i.e., 586) computer which has 12 
+megabytes of RAM. Installation of the same software takes less than ten minutes. 
+Printing is a breeze. There is never any hourglass telling me to wait for access 
+to the CPU. A fast machine will reduce the waiting time you spend in front of the 
+computer, and will give you more time to do the things you really want to do.</P> 
+ 
+<H3>9. Reinstall everything once a year</H3> 
+
+<P>I try to clean my real desk several times a year; my wife wishes that I would clean 
+it every day, or even dispense with it entirely. A computer is a virtual desk. It 
+gets cluttered and disorganized just as your real desk does. As a computer is a 
+thinking tool, clutter reduces its efficiency to help you think.  Do you really 
+need that 1,000-font package you bought on the trip home? Isn't it time you finally 
+deleted Doom?</P>  
+
+<P>Maybe now is the time to start the final migration away from those old DOS programs. 
+Are you ever going to use those three word processors? I recommend backing up all 
+important files, reformatting the hard disk, then using a program like Norton 
+Utilities Disk Doctor to mark any bad sectors of the disk, and finally reinstalling 
+all your software once a year. It'll take a day to complete. The free time around 
+New Year's or Golden Week might be a good time for this as everybody is cleaning 
+everything anyway. Why not clean the  computer once a year?</P> 
+ 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>May 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

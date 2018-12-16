@@ -1,0 +1,226 @@
+<HTML>
+<HEAD>
+<TITLE>Win95E, Win95J on one system</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Running Win95 E&amp;J on one system</H1>
+<P>
+</P>
+<H2>by 
+<A HREF="http:../members.html#Canavan.Conor">Conor Canavan</A>
+</H2>
+<HR>
+
+<P>I don't know if 
+<A HREF="http:../members.html#Lloret.Mike">Mike Lloret</A>
+ knew when he 
+unearthed <A HREF="http://www.v-com.com">System Commander</A> (as reviewed last month's 
+Algorithmica Japonica) that this multi-boot utility is the finest solution for installing 
+bilingual versions of Windows 95 (Japanese and English). A couple 
+of days after reading Mike's article, I picked up the June edition 
+of <A HREF="http://www.cjmag.co.jp/">Computing Japan</A> where System Commander 
+was being lauded as the solution for bilinguality. It had only been a number of months 
+earlier that the same magazine was highlighting a batch routine solution whereby files 
+are copied and overwritten prior to entry into either Japanese or 
+English <A HREF="http://www.microsoft.com/windows/">Windows 95</A>. The solution was extremely 
+complex and not easy for the average Joe Bloggs user. Indeed, if your computer locked 
+up during the copy or batch routine process; well, let's not think about it.</P>
+ 
+<P>Having reread the article for System Commander in Computing Japan, it would appear 
+that the author knows that it works, yet is unaware of the specific procedure 
+required to make it work. (Please excuse me Bill if I am wrong!) The reason I 
+mention this is because there is no reference to creating different logical 
+drives, nor the dilemma that results from Japanese and English Windows being 
+installed on the same logical drive. If you haven't determined by this stage, I 
+apologize for the shock, but you must repartition and reformat your hard disk before 
+you start. However, now may be the opportune time to install that SCSI 2 drive you 
+have been promising yourself for the past year. If it's not, make sure you have a 
+good backup of your data, whether it's on a bunch of floppies, a tape or to a 
+network drive.</P> 
+ 
+<P>The procedure is lengthy and will take about two hours. Nevertheless, when complete 
+your bilingual environment will be rock solid. I have carried out the procedure on 
+numerous occasions and have had no problems once the systems and boot utility have 
+been properly installed. Anyway, enough of the blarney; here's what you need to do.</P> 
+ 
+<H3>Introduction:</H3> 
+ 
+<P>I am assuming that you, my kind reader, know a little bit about computers. If 
+you are stuck at any point you may e-mail 
+me <A HREF="mailto:conor@gol.com">(conor@gol.com)</A>, referencing the point 
+of difficulty.</P> 
+ 
+   <UL>
+   <LI>1 copy of System Commander 
+   <LI>1 copy of English Windows 95 (CD or floppies) 
+   <LI>1 copy of Japanese Windows 95 (CD or floppies) 
+   <LI>1 boot floppy with FORMAT.COM, FDISK.COM (preferably DOS 6.xx) 
+   <LI>1 copy of you CD-ROM drivers
+</UL> 
+ 
+<H3>Before you start:</H3> 
+ 
+<P>Do you have a CD-ROM drive? If so, make sure you have the drivers and that you know 
+how to install them. If you have a CD-ROM installed (and it works), make a floppy-copy 
+of your AUTOEXEC.BAT and CONFIG.SYS and CD-ROM specific files (typically, 
+MSCDEX.EXE as referenced in your AUTOEXEC.BAT and CDROM.SYS as referenced in your 
+CONFIG.SYS).</P> 
+<P></P>
+<PRE>
+AUTOEXEC.BAT: 
+ 
+C:\CDROM\MSCDEX.EXE /D:CDROM001 
+ 
+CONFIG.SYS: 
+ 
+DEVICE =C:\CDROM\CDROM.SYS /D:CDROM001 
+/B:340 
+ </PRE>
+<P></P>
+<H3>Overview:</H3> 
+ 
+<P>The general procedure is as follows:</P> 
+ 
+   <UL>
+   <LI>Create two logical drives, C: and D: 
+   <LI>Install English Windows 95 in C: 
+   <LI>Install System Commander in C: 
+   <LI>Install Japanese Windows 95 in D:
+</UL> 
+ 
+<P>Here goes:</P> 
+ 
+   <OL>
+   <LI>Boot the computer through the boot-floppy and run FDISK. 
+  
+   <LI>Delete all partitions. 
+  
+   <LI>Create a Primary DOS Partition. When prompted to set all available disk space as the partition size, 
+   select NO. The primary partition (which will be your C: drive) should be 50% of the available size in MB. You 
+   can easily calculate this yourself. 
+    
+   <LI>Now create a Extended DOS partition (which will be your D: drive). All remaining disk-space may be 
+   assigned. 
+    
+   <LI>The last requirement from inside FDISK is to set the Primary Partition active. (This is option 2 from the 
+   menu). 
+    
+   <LI>On exiting from FDISK the system will reboot. 
+    
+   <LI>Leave the boot-floppy in the PC and allow the system to boot through it again. 
+    
+   <LI>Format the new C: drive by typing FORMAT C: /S from A: (The /S switch copies required system files 
+   from A: to C:) 
+    
+   <LI>When asked for a volume name (at the end of the format) input &quot;WIN95E&quot;.
+    
+   <LI>On the completion of formatting drive C:, proceed to format D: by typing FORMAT D: from A:. Note that 
+   on this occasion there is no need for the /S switch. This drive should be given the volume name WIN95J. 
+    
+   <LI>If you are not using a CD-ROM please proceed directly to 13. 
+    
+   <LI>To install the CD-ROM drivers you may either (a) install directly from the disk that came with the CD-
+   ROM drive or (b) copy the files detailed in &quot;Before you Begin&quot; to C:. Procedure (a) is trivial. Procedure (b) 
+   requires that the files MSCDEX.EXE (or equivalent), CDROM.SYS (or equivalent) be in place and that the 
+   drivers be loaded in AUTOEXEC.BAT and CONFIG.SYS. (See your old versions of these files for specific 
+   reference). By the end of this procedure you should be able to connect to your CD-ROM drive. 
+    
+   <LI>Insert the English Windows 95 SETUP disk in drive A: or the CD-ROM in drive E: and run SETUP. 
+    
+   <LI>When prompted for the destination directory of English Windows 95 choose the non-default C:\WIN95E. 
+    
+   <LI>For installation-type select &quot;TYPICAL&quot; and continue with the screen instructions. If you're doing the 
+   installation via the floppy method you may want to make yourself a cup of tea. You have a long shuffle 
+   ahead of you. I wouldn't bother making an emergency boot-disk if requested; making one has never saved 
+   my bacon. 
+    
+   <LI>After the installation of English Windows 95the system will reboot and with a message saying that this 
+   is the first time Windows 95 has been run. A system inspection and a degree of file thrashing thereafter 
+   takes place. Finally, you are requested to reboot the system. English Windows 95 is now installed. 
+    
+   <LI>Insert the System Commander diskette into drive A: 
+    
+   <LI>From English Windows 95 escape to a DOS box (via Start, Programs, DOS-Prompt) and run 
+   INSTALL.BAT from A: (A:\INSTALL). 
+    
+   <LI>Bypass the COLOR options by pressing ENTER and when asked if you have a BOOT DISK indicate 
+   YES. Set the System Commander directory as C:\SYSCOM (or indeed, you may select the default C:\SC) 
+   and continue. When asked if you are using Disk Compression say &quot;NO.&quot; 
+    
+   <LI>You will receive messages saying that a MultiFAT table is being created and that the Partition 
+   Information is being saved. Simply press ENTER to continue. A new boot record is thereafter installed. 
+    
+   <LI>When asked &quot;DO YOU INTEND TO INSTALL WIN95 IN NEAR FUTURE?&quot; respond with No. If you 
+   select Yes you are shown a README file which outlines potential problems with Windows 95 and other 
+   operating systems. Similarly, respond with No when asked &quot;DO YOU PLAN TO INSTALL OS/2?&quot; System 
+   Commander is now installed and you may Exit to DOS. 
+    
+   <LI>The next requirement is that you restart your computer. The system immediately recognizes the new 
+   utility, displaying a &quot;Welcome to System Commander Message&quot; You are asked for your flavor of syntax for 
+   your English Windows 95; anything comprehensible is OK. 
+    
+   <LI>System Commander asks you to input a unique directory to store the Windows 95E specific boot files. 
+   I propose establishing the directory WIN95E under C:\SYSCOM for this purpose. 
+    
+   <LI>Having created the C:\SYSCOM\WIN95E directory, load English Windows 95 (from the newly displayed 
+   menu) and thereafter Restart the computer in MS-DOS mode (Start, Shut Down,...3rd Option!). 
+    
+   <LI>We are now ready to start installing Japanese Windows 95. If you are using floppies simply place the 
+   SETUP diskette in A: and type SETUP /IM /IS. (These switches bypass memory checks and an unnecessary 
+   Scan Disk routine.). If you have a CD-ROM, place the CD-ROM in the drive and from E: type the same 
+   SETUP /IM /IS. 
+    
+   <LI>INSTALL THE JAPANESE VERSION OF 95 in D:\WIN95J. I write this in CAPITALS as the system 
+   detects the previously installed English Windows 95 and will attempt to install on top of it. If you press enter 
+   at this stage you will overwrite the hour and a half of work it has taken to get to this stage. I have done this 
+   a couple of times and I can assure you that it hurts. 
+    
+   <LI>Similar to the installation of English Windows 95 I suggest you select *hyoujun* (typical). Don't bother 
+   with the emergency disk this time either. Next thing you know the system will be installing. 
+    
+   <LI>Enplus: Coming toward the end of the installation you may encounter an error in relation to the 
+   DBSPACE.BIN and similar files. I can't recall exactly why it occurs. However, you are asked to save the file 
+   (which is default), so do this, and all should be well. 
+    
+   <LI>Upon completion of the loading the system will reboot (directly into Japanese Windows 95) and continue 
+   to configure itself. At the bottom of the screen you are notified that Windows 95 is running for the first time. 
+   Like before, you have to update time zones, MS Exchange and printer options (if selected during the 
+   installation). 
+    
+   <LI>After the installation of Japanese Windows 95, the System Commander boot record will have been 
+   overwritten. This is simple to correct. Boot the system into command-line mode (by hitting F8 while booting) 
+   and select Option 6. Then enter US (to change to US mode), CD C:\SYSCOM (to change to the System 
+   Commander directory) and SCIN (to load System Commander Installer). 
+    
+   <LI>Just follow the instructions (colors are OK) and from the Main Menu (second screen), select 
+   Reinstall/Update System Commander. 
+    
+   <LI>Exit from System Commander to DOS and reboot the computer with the CTRL-ALT-DEL keys. 
+    
+   <LI>Upon reboot the newly installed Japanese Windows 95 is detected (again you must correct the syntax) 
+   and you are asked for a unique directory for the Japanese boot files. Select C:\SYSCOM\WIN95J. 
+    
+   <LI>The only thing that remains is to neatly align the System Commander boot menu.
+</OL>  
+ 
+<H3>Congratulations! You're Finished!</H3> 
+
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>July 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

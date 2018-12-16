@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>PCMCIA Problems</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>PCMCIA Problems - Part 1</H1>
+<P>
+</P>
+<H2>by Tom Donahue</H2>
+<HR>
+<P>Over the weekend I installed my first PCMCIA card, a 
+<A HREF="http://www.xircom.com/">Xircom</A> Ethernet adapter. 
+It's a long story, but here are a few things I found out just 
+in case anyone else is about to try the same.</P> 
+ 
+<P>To start off, the Xircom installation program was excellent. 
+After a quick look at the docs I plugged in the card and launched 
+the program. I answered a few questions; it automatically scanned 
+my system and chose the appropriate IRQ, I/O port and memory 
+locations. All I had to do was run 
+<A HREF="http://www.microsoft.com/">Windows for Workgroups</A> (WfW) 
+Network Setup and I was ready to go after only 10 minutes. 
+Except...WfW boots with a dialog box saying that MS Network 
+didn't start because the network driver failed to load.</P> 
+ 
+<P>My first thought was, I should have loaded Card and Socket 
+Services.  This is a software layer that hides hardware details 
+from the card manufacturer's driver and provides services like 
+power management and the ability to switch cards without 
+rebooting. Since I only have one card I thought I didn't 
+need it, but sure enough, a look at 
+<A HREF="http://www.ibm.com/">IBM's ThinkPad</A> 
+manual turns up the statement that C&amp;SS is required for all 
+PC cards.</P> 
+
+<P>OK, rewrite CONFIG.SYS to include C&amp;SS and run the Xircom install 
+program again. It works fine. Except...after the hardware detection phase it stops and says 
+please insert your Ethernet card. The card is inserted and 
+connected, but apparently it can't see it.</P> 
+ 
+<P>Back to the manuals. The Xircom manual has a section on the 
+ThinkPad 360, which says that I need to insert the statement 
+MEMWAITSTATES=1 in PROTOCOL.INI. What is this? My 360 has a 
+lowly 33-Mhz 486, so it must be the pokiness of the 
+ThinkPad memory system, which I've read about before. 
+Whatever, at this point I'm not going to argue. I find 
+PROTOCOL.INI in the Windows directory, and now the question is 
+where to insert that statement. There are 5 sections in the 
+file with names like [NETBEUI] and [XIRC$XPSNDIS]. They couldn't 
+mean insert it anywhere, so I insert it in all 5 sections and try again.  
+No go.</P> 
+ 
+<P>I begin to suspect a hardware problem. The 16 MB memory card 
+that arrived in the same shipment didn't work so I had to send 
+that back (to First Source International, who were very prompt 
+and courteous about exchanging it). Also the metal sleeve of 
+the original WfW floppy #6 came off inside the ThinkPad... a 
+hardware problem is a possibility. But when I run Xircom's 
+excellent diagnostics program the card passes with flying 
+colors...[end day 1]</P> 
+ 
+<P>The next day I decided I was having better luck without the 
+Card and Socket Services, so I removed those and tried configuring 
+the IRQ, memory location, etc., manually. This was a process of 
+running the install program, setting up the network and rebooting 
+the computer and WfW to see the dialog box that says the network 
+driver didn't load. By the time Network Setup had backed up 
+PROTOCOL.018 I decided that this approach wasn't working and I 
+should try something else.</P> 
+ 
+<P>Back to the manuals. The Xircom manual had a whole list of 
+suggestions, which I tried, including moving the adapter to the 
+other socket and attempting to check the parameters assigned by 
+Card and Socket Services. One that I wasn't able to try was 
+plugging the dongle cable directly into the hub: both sides have 
+female connectors. I also tried freeing up more low memory, 
+remembering how WinJ wouldn't load on another machine until I 
+installed QEMM.  No joy.</P> 
+ 
+<P>Finally it occurred to me that I should look at the CONFIG.SYS 
+on my main machine where WfW is working. There was a statement,</P> 
+ 
+<P>DEVICE=C:\WINDOWS\IFSHLP.SYS</P> 
+ 
+<P>that wasn't there on the ThinkPad. When I put it in, the network 
+driver loads, WfW comes up and asks for my password. Eureka!</P> 
+ 
+<H3>Moral 1:</H3> 
+
+<P>Regardless of what it says in the manual, Card and Socket Services 
+are not required for all PC cards. The next challenge is to 
+figure out why I can't install the card with C&amp;SS enabled, but 
+for now it's working fine without.</P> 
+ 
+<H3>Moral 2:</H3> 
+
+<P>WfW Network Setup will make various changes to your 
+Autoexec.Bat and Config.Sys files, but it won't insert IFSHLP.SYS. 
+If it isn't there, you need it.  [end day 2]</P> 
+ 
+<P>Now that WfW was running, I had to try it out. First I tried to 
+access the CD-ROM drive on the other WfW machine. That was one of 
+the main incentives for doing this, so I wouldn't have to install 
+any more software from floppies. But File Manager on the ThinkPad 
+reports &quot;[no files]&quot;. Hmm. Back to the manuals.</P> 
+ 
+<P>In the WfW manual I read that to share CD-ROM drives MSCDEX 
+needs the /S switch. So I add the /S switch and reboot. MSCDEX 
+reports &quot;Cannot share drives&quot; and refuses to load at all. Hmmm. 
+Version is OK. Maybe it's because I'm loading two drivers at once? 
+Try removing the Nakamichi driver... no, that's not it.</P> 
+ 
+<P>Where were the MSCDEX docs? Ah yes, a doc file came with the 
+Sanyo CD-ROM drive. 
+Here it is: the /S switch &quot;Instructs MSCDEX.EXE to patch DOS to 
+allow sharing of CD-ROM drives on MS-NET based 
+network servers&quot;.  Terrific, it patches DOS. Will it patch DOS/V?</P> 
+ 
+<P>Then I had my second brilliant idea of the weekend. There was also 
+a Win95 machine on the network.</P> 
+
+<P>Insert the disc, Share As.., and there it is!</P> 
+ 
+<H3>Moral 3:</H3> 
+
+<P>If you upgrade 
+to <A HREF="http://www.microsoft.com/windows/">Win95</A>, you 
+don't have to worry about MSCDEX.</P> 
+ 
+<P>So for now I appear to be set up. The current plan: to install 
+Win95J on the ThinkPad leaving WfW in place for a couple of 
+English apps. Also to upgrade my main machine to Win95E ASAP.</P> 
+ 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>April 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc.html">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

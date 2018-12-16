@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
+<HTML>
+<HEAD>
+<TITLE>Perl Dabbler Tries Fax-to-Internet Gateway</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>A Perl Dabbler Tries His Hand at a Fax-to-Internet Gateway</H1>
+<P>
+</P>
+<H2>by <A HREF="mailto: jroth@gol.com">Joel Roth</A></H2>
+<HR>
+ 
+<P>Yes it's true. Yours truly, a would-be programmer, has actually set 
+up a multitasking fax-to-internet gateway.
+ 
+<P>I wanted to help a translator friend get work by fax after he moved 
+back to Australia. Conceptually, it seemed rather simple to use fax 
+software and a faxmodem to receive faxes, and then to send them by e-mail 
+or ftp to his internet account.
+ 
+<P>I was beguiled and started to work with the tools at hand: 
+<A HREF="http://www.austin.ibm.com/pspinfo/os2.html">OS/2</A>, 
+<A HREF="http://mox.perl.com/">perl</A>, 
+a spare modem with fax software, and an internet account.
+ 
+<P>The fax receive software (I used Quick Link II and later BGFAX) 
+generates a log file that lists the filename, date and time received, 
+number of pages, whether the transmission ended normally and, 
+significantly, the ID string received from the sender.
+ 
+<P>To save on phone lines (which cost about ¥70 - ¥80,000 each to buy and 
+install) my first idea was to receive faxes for several translators on a 
+single line. I'd use the ID string to identify the sender, and use that 
+to determine where to send the fax. Astute readers will quickly realize 
+that if this system routes faxes from Agency ABC to Translator Smith, it 
+can't route faxes from Agency ABC to Translator Jones as well.
+ 
+<P>I'd like to offer people their own phone number as well, which would 
+allow them to receive faxes from anyone without the above restrictions. 
+To keep down costs, I am 
+using <A HREF="http://www.ntt.jp/">NTT's</A> Dial-In service and a special 
+box (supplied by Hokuto Telecom Systems) to receive calls for three 
+numbers over a single line in sort of a Japanese counterpart to the 
+distinctive ringing service available in the States. In future I might 
+incorporate some PBX or voice-mail software for OS/2 to allow a single 
+sender to send faxes to multiple destinations.
+ 
+<P>Setting up OS/2 to receive faxes automatically using Quick Link II for 
+DOS turned out to be rather easy. A virtual DOS machine runs in the 
+background like any other process. There is apparently a whole esoterica 
+to starting processes. The parent process can wait for the child process 
+to terminate, the child can run independently of the parent, there can 
+even be pipes to pass IO streams between parents, children and siblings. 
+And in the cruel world of computing, killing processes is routine.
+
+<P>To set up the system, I had to coordinate three different programs: 
+<UL><LI>A FAX RECEIVE program that starts at boot and is always ready 
+to receive.
+<LI>An ENQUEUE program that reads the fax receive logs and enqueues fax files and their routing data in a 
+<LI>couple of spool directories. 
+<LI>A TRANSFER program that sends out the files and clears the spool.</UL> 
+ 
+<P>With OS/2, I am fortunate that the OS provides file locking, which 
+ensures that file operations are atomic. ENQUEUE can't touch a fax in the 
+process of being received till FAX RECEIVE closes it. TRANSFER can't 
+access files in the spool directories until they have arrived completely. 
+And with that, yours truly doesn't need to learn about semaphores or other 
+multitasking security mechanisms!
+ 
+<P>Another exciting puzzle piece was finding that there are several 
+shareware 'cron' programs for OS/2. Like the Unix 'cron' program, these 
+scheduling utilities watch the clock, and start certain processes at 
+certain times. So I can set the system to check every 15 minutes if any 
+faxes have come, to enqueue them, and to send them out.
+ 
+<P>I found other things that contribute to a more reliable system. I found 
+I can set OS/2 to reboot automatically on a system hang, I can suppress 
+pop-up error messages that require the user to click on an "OKAY" button 
+(the messages are logged in a file), and I have a 'reboot' command, should 
+I want to reboot the machine periodically. This information is available, 
+but takes some perseverance to find, especially if you're not aware it 
+even exists!
+ 
+<P>Early on I decided I would send files to their destinations by 
+UUencoded email or FTP over a PPP link. FTP has the advantage that 
+files arrive in one piece in the recipient's home directory. Of course you 
+need the person's password for this. (Is it any more dangerous than giving 
+out your credit card number to a mail-order firm?)
+
+<P>Using PPP has advantages and disadvantages. On the plus side, I don't 
+have to think much about the internet provider, since once PPP is 
+connected, my humble PC becomes a site on the internet. I just run local 
+clients for mail and FTP from an OS/2 command line. This is much easier 
+than trying to write telecom scripts to execute commands on the internet 
+provider.
+ 
+<P>Or so I thought. As it turns out, all the network client programs I've 
+found know nothing of PPP, and assume that they are on stable, robust 
+TCP/IP networks. If the PPP phone connection is broken, these clients never 
+timeout, and never terminate. Zmodem, in contrast, is prepared to deal with 
+the vagaries of modem communications: it knows how to time out. My POPMAIL 
+and FTP clients don't. If these clients never terminate, processing stops.
+ 
+<P>I found a multitasking-sort-of-solution: start the POPMAIL and FTP 
+clients as detached processes, calculate how long their transfers should 
+take under poor conditions, and kill them if they take too long or if 
+PPP dies and they're still alive. I also set up a PPP monitor to kill PPP 
+if the connection runs too long.
+ 
+<P>The software for all this was written as a mixture of perl programs, 
+batch files, and even batch files containing perl programs. OS/2 has its 
+own batch language, called REXX, which has its roots in the mainframe 
+world. IBM developed it to have a uniform scripting language over all its 
+various operating systems. But yours truly didn't want to learn it, and 
+has stuck to simple DOS-style batch commands, with perl taking up the 
+slack. I found there are REXX libraries for FTP, but that was after 
+I'd navigated the more roundabout solution of using perl to write macros 
+for ncFTP, a Unix FTP client that has been ported to OS/2.
+ 
+<P>The system seems to work. Faxes come in and get sent out along with 
+an e-mail message that tells the user the number of pages and the sender. 
+It gets better the more that people pound on it. I'm particularly indebted 
+to Douglas Burbury for sending faxes ranging in length from 10 to 80 
+pages, which brought up some unusual failure modes. For the truly 
+paranoid, I now send a message everyday to indicate that the service 
+is operational.
+ 
+<P>The biggest problem seems to be explaining the service to people. 
+Instead of picking incoming faxes off the floor where they've fallen out 
+of his fax machine, the user will have to download files from his internet 
+account and use a shareware utility to view them or print them out on a 
+laser printer. This will obviously require the sort of skills that a 
+person needs to set the clock on a video machine, restricting the service 
+to a relatively elite clientele.
+ 
+<P>Most of the project was completed over about two weeks when I was 
+between translation jobs. I encountered numerous hurdles, and dealing 
+with each one took hours to days, leaving me envious of those in-house 
+programmers fortunate enough to have a talented and compassionate mentor. 
+The author recommends against learning programming in the school of hard 
+knocks!
+ 
+<P>The actual code is not more than about 25k of ASCII text in several 
+perl library files and a couple more scripts that draw on them. I'm sure 
+a real programmer could have turned 
+something out in an afternoon.
+ 
+<P>But I have learned a lot in the process, and lurking in the 
+<A HREF="news:comp.lang.perl.misc">comp.lang.perl.misc</A>
+ newsgroup has been a great help. So perhaps, all 
+things considered, programming by the seat-of-your-pants method may not be 
+such a bad idea.
+ 
+<P>Editor's note: Anyone interested in fax-to-internet technology can 
+contact Joel at <A HREF="mailto: jroth@gol.com">jroth@gol.com</A>. 
+(Note that he will be out of the country, 
+and answering email only sporadically from Feb. 1 to March 6.) 
+
+<P>Appendix I: Technology Summary 
+ 
+<P>Hardware: 
+ 
+<P><A HREF="http://www.ibm.com/">IBM</A> compatible, 133MHz Pentium CPU, 
+32MB memory, Asus P55TP4XE PCI motherboard, 
+<A HREF="http://www.tekram.com/index.html">Tekram</A> (AMD) SCSI 
+controller, <A HREF="http://www.quantum.com/">Quantum</A> Capella 
+2GB hard disk, Asus video card (S3 968 chipset), Iiyama 17" 'Hello II' 
+monitor, <A HREF="http://www.hp.com/">HP Laserjet IIIP</A> printer, and 
+the Achilles' heel, <A HREF="http://www.mot.com/">Motorola</A> 
+Power and Practical Peripherals modems.
+ 
+<P>Software: 
+ 
+<P>(related directly to this application): OS/2 version 3.0 (IBM), 
+Perl 5.000 (Larry Wall), SIO serial driver (Raymond Gwinn), ncFTP 1.6 
+(Mike Gleason, ported to OS/2 by Steve Will), InfoZIP utilities (Mark Adler, 
+Richard B. Wales, Jean-loup Gailly, Kai Uwe Rommel, Igor Mandrichenko 
+and John Bush), and the emx 32-bit runtime libraries 0.9a fix 03 
+(Eberhard Mattes), Quick Link II with Send/Receive Fax for DOS v2.2.2 
+(Smith Microsoftware), BGFAX2 v1.54 for OS/2 (B. J. Guillot), and NCDC 
+(UU encode/decode) by Jurgen Doornik.
+ 
+<P>It is worth noting that most of this software is usable without 
+licensing of any kind. SIO and BGFAX are shareware. OS/2 and Quick Link 
+II are commercial software (QLII was supplied with the PP modem).
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>February 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc.html">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

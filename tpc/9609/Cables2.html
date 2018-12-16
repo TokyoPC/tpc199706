@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<TITLE>Printer cable</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Experiment to Connect Two PCs to One Printer</H1>
+<P>
+</P>
+<H2>by Masayo Arai</H2>
+<HR>
+
+<P>Hi TPC members!</P> 
+ 
+<P>The report from me this month is a result of my experiment.  I fixed a printer cable branch adapter to connect the Beast (Mike's  PC, 
+a <A HREF="http://www.gw2k.com/">Gateway2000</A> P5-66) and Beauty 
+(my PC, a
+<A HREF="http://www.mitac.com.tw/">Mitac</A> 486DX4/100) directly to
+our <A HREF="http://www.epson.com/index.html">Epson</A> Action Laser 1500, but it 
+resulted in FAILURE!  I do not know whether this is common sense for PC users, but I hope this report gives a laugh to somebody.  At least, the experiment 
+was very fun for me and my skill at soldering is a little bit improved.</P> 
+ 
+<P>A corner of our PC room is filled with tangled cables.  These cables connect PCs, peripheral devices, stereo set, a telephone, a
+<A HREF="http://www.casio.com/cgi/index.cgi?cat=keyboards&ser=Keyboards">Casio</A> keyboard, and some home appliances.  Mike and I are sharing one printer for our PCs.  The connections between the printer and the two PCs are established by three separate cables as shown. I just wanted to try connecting two PCs directly to the printer to see how it would work.  Some
+years ago, I did a similar experiment to connect two amplifiers (a TV's and a cassette tape deck's) to a single set of speakers.  The result that time was not bad.</P>   
+ 
+<P>Without connecting or disconnecting the printer cable to/from the Beast (it is a full tower machine placed under the workbench/desk and it's troublesome to reach to the back side), I fixed two full connection cables (C1 and C2 in Fig. 1) to extend the PCs' parallel ports.  Each time when we wanted to use the printer, we switched the printer cable connection to P-C1 and P-C2.</P> 
+ 
+<IMG SRC="cable1.gif" ALT="Cable Figure 1" WIDTH=400 HEIGHT=282> 
+ 
+<P>I thought if the signal from a PC to a printer is only unidirectional from a PC to a printer, it is no problem to always connect two or more PCs to one printer directly if the two PCs do not send signal to the  printer at the same time.  If  two PCs could be always connected to the printer, we wouldn't have to change the troublesome connection.</P> 
+ 
+<P>So, I fixed a branch adapter.  The connections are very simple to solder all 25 pins of D-sub female connector to two male connectors.</P> 
+ 
+<IMG SRC="cable2.gif" ALT="Cable Figure 2" WIDTH=400 HEIGHT=282> 
+    
+<P>The result of the experiment was:</P> 
+ 
+<P>If two PCs are connected directly to one printer, the printer does not work if both PCs are turned on. If only one PC is turned on, the printer works OK (this is the equivalent connection between one PC and one printer, which means there's NO MEANING in having the branch adapter).</P> 
+ 
+ 
+<P>I guess:</P> 
+ 
+<P>When a PC is on, one or more pins are always pulled up or pulled down.  This conflicts with the printer somehow and causes the problem.  One PC is apparently trying to control the signal for the printer, while the other PC forces some pins always high or low.  If someone knows about the parallel printer interface specifications, let me know some hints.  Then I want to try adding some flip switches to the branch adapter and try again.</P> 
+ 
+ 
+<P>So, Mike and I now are using the original printer connection as shown in Figure 1.  I now understand why PC shops are selling  printer buffer/switcher devices.</P> 
+ 
+<P>See you again.</P>  
+ 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>September 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

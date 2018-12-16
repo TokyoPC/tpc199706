@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<TITLE>LaserWriter to PC cable</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Playing With a Soldering Iron</H1>
+<H2>Cable to connect LaserWriter and PC</H2>
+<P>
+</P>
+<H2>by <A HREF="mailto:arai@saed.tmg.nec.co.jp">Masayo Arai</A></H2>
+<HR>
+
+<P>Hi, fellow TPC members!</P> 
+ 
+<P>I like playing with PCs, but not by playing PC games.  My PC at home, whose name 
+is Beauty, is used almost entirely for experiments.</P> 
+ 
+<P>I do not do so many hardware engineering experiments, but I have enough curiosity using 
+a tester and a soldering iron to fix cables and adapters to experiment with how PCs and 
+peripheral devices work.  I also like to edit ini files, system files, hidden files, 
+and read only files to experiment with how application software works.  In many 
+cases my hypothesis or expectations are wrong and experiments fail, but it's more 
+fun (I never think about things deeply).  This is the way I'm playing with my PC.</P> 
+ 
+<P>This time,  I'm going to talk a bit about serial cables.  Serial cables — there are 
+too many varieties of pin connections, shapes of connectors, and their combination.  
+The differences come from which PC models are used and for which type of serial 
+connection they are used.  How they are called is also very curious; very generally 
+they are called serial cables, or RS-232C cables, but usually from the types of 
+pin connection, they are called normal, modem, straight, cross, null, or all-pin 
+connected.  It's confusing enough...and fun.</P> 
+ 
+<P>In this AJ issue, I'll introduce the pin connection for PCs and the Apple LaserWriter 
+from my pin connection library.  I've been keeping all my experiment notes for years.  
+I turned the pages of my Volume 1 PC notebook (I have 2 volumes of paper notebooks 
+and one electronic text file to keep records of all my experiments).</P> 
+
+<P>According to the notebook (that was 1993), I was trying to buy a cable to connect an 
+IBM compatible PC to a second-hand Apple LaserWriter Plus.  The cable was not easy 
+to find, so I got pin connection information from one of my friends and made a cable.  
+The pin connection is special.  It is not the standard RS-232C cable to connect PCs 
+to peripheral equipment.</P> 
+
+<P>Later on, I used the cable for a LaserWriter II NT, and it worked well.  I guess this 
+cable works for all LaserWriter series, though I've had no chance to try for all the 
+product line.</P> 
+ 
+<P>If you own a LaserWriter, you can try to make the cable as described in the 
+following.  Do not forget to change the LaserWriter mode from Apple Talk to RS-232C.  
+Usually a LaserWriter has some dip switches (very inconvenient to change) or other 
+shape of switch to change the interface mode.  You will also use the initialize 
+switch (also sometimes it's needed to move up or down an inconvenient dip switch) if 
+the printer is also connected to Apple Talk.</P> 
+<P></P> 
+<PRE>
+Cable 1: Apple LaserWriter to IBM PC 
+ 
+Laser Writer end 	      PC end            
+                       	RS-232C 
+D-sub                   D-sub 
+25-pin                  9-pin       (25-pin) 
+Male                    Female 
+ 
+Pin # 
+ 
+4 ------------------    1           (8) 
+5 ------------------    1           (8) 
+2 ------------------    2           (3) 
+3 ------------------    3           (2) 
+6 ------------------    4           (20) 
+7 ------------------    5           (7) 
+20 -----------------    6           (6) 
+8 ------------------    7           (4) 
+8 ------------------    8           (5) 
+Shell --------------    Shell       (Shell) 
+ 
+1 (not connected)       9           (1) 
+9-19,                               9-19,  
+21-25                               21-25 
+ </PRE>
+<P></P>
+<P>The cable can be made to connect to the 9-pin connector on the PC or the 25-pin 
+connector on the PC.  The 9-pin to 25-pin or 25-pin to 9-pin adapters are easily 
+found at PC shops, or you can make them.</P> 
+ 
+<P>Comparing with the standard RS-232C cable that you use to connect your modem to your 
+PC, you can see the difference clearly.  Here is the pin connection I checked on the 
+cable connecting my husband's PC and his modem:</P> 
+<P></P> 
+<PRE>
+Cable 2: Modem to IBM PC 
+ 
+Modem end               PC end 
+D-sun 25 pin            D-sub 9 pin 
+Male                    Female 
+ 
+Pin # 
+ 
+8 ------------------    1 
+3 ------------------    2 
+2 ------------------    3 
+20------------------    4 
+7 ------------------    5 
+6  -----------------    6 
+4 ------------------    7 
+8 ------------------    8 
+22------------------    9 
+Shell --------------    Shell 
+ </PRE>
+<P></P> 
+<P>The homemade cables are only functionally efficient. But do not forget that 
+unshielded cables emit noise.  This causes interference to your nearby TV, radio, 
+and telephone.</P> 
+ 
+<P>This report is just about the fact that I experimented.  If someone knows more 
+logical explanations, please let me know.  I'm 
+at <A HREF="mailto:arai@saed.tmg.nec.co.jp">arai@saed.tmg.nec.co.jp</A> or at 
+the same telephone and fax number as the AJ editor.</P> 
+ 
+<P>See you next time.</P> 
+ 
+<P>[<I>It's mostly Masayo's expertise that keeps The Beast running and me more-or-less 
+sane. — Mike</I>]</P> 
+
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>July 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc/">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

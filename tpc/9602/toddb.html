@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
+<HTML>
+<HEAD>
+<TITLE>Swappable Drives, OSs, and UPS problems in Japan</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>Thoughts on Swappable Drives, OSs, and UPS problems in Japan</H1>
+<P>
+</P>
+<H2>by Todd Boyle</H2>
+<HR>
+ 
+<P>Lately my boss has been telling me I should consider a different 
+line of work. Taking his advice to heart, I have decided to become a 
+programmer. (Just kidding...)
+ 
+<P>I just formatted a blank hard disk, and installed Windows 3.1 onto it 
+in order to support installing 
+<A HREF="http://www.windows.microsoft.com/">Win95</A>. Went without a 
+hitch. After installing ASPICD.SYS, ASPI8DOS.SYS, MSCDEX etc. I was able 
+to access the CDROM to install Win95, and then installed the eight 
+diskettes of 
+<A HREF="http://www.windows.microsoft.com/msoffice/freestuf/MSAccess/index.htm">MS Access 2.0</A>, 
+and finally installed 
+<A HREF="http://198.105.232.10/VBASIC/VBPINFO.HTM">Visual Basic 4.0</A> from 
+the CDROM. It all went perfectly - it was truly a no-brainer.
+ 
+<P>I just made my first Hello World program in Visual Basic, which was 
+just a screen with a text box. Starting tomorrow, for 21 days I will 
+begin the SAMS book with the 21 day do-it-yourself course in Visual 
+Basic. Let's see if I can make some progress. If VB is as hard to learn 
+as C++, it's going to be veni, vidi, shelfi again....
+ 
+<P>The setup I have is one of these &#165;4,000 removable SCSI brackets. 
+The SCSI drawer is just a hunk of plastic with a couple of connectors 
+and LED indicator. You screw your disk into the drawer and then it can 
+be pulled out anytime. I am using these removable hard disks for 
+experimenting with OSs. My real disk is DOS 5 running on an external 
+SCSI enclosure (An HP 2-gig SCSI disk).
+ 
+<P>I've had some nasty experiences with operating systems, most recently 
+with Warp going into my DOS disk and screwing it up, and then when I had 
+booted from my DOS disk and loaded my ASPI drivers, somehow the drivers 
+or the DOS got into the 
+<A HREF="http://www.austin.ibm.com/pspinfo/os2.html">OS/2</A> disk which 
+was running HPFS, and it killed my Warp desktop.
+ 
+<P>I had set up my SCSI controller not to scan the bus or initialize the 
+SCSI ID#2 of my Warp disk. But that only stopped the SCSI controller BIOS 
+from doing it. The ASPIDISK.SYS driver paid no attention. 
+
+<P>A very similar thing happened earlier to my IDE drives, when I 
+installed Warp. Imagining that my IDE drive would be safe from the 
+install program, I went to the motherboard BIOS and entered "no drive C:" 
+but Warp comes with drivers that supercede the BIOS and got into my DOS 
+IDE drive and wrecked the Windows setup.
+ 
+<P>These removable drives let me install an OS like Win95 on a whim. I can 
+install a cheap SCSI disk into one of the extra plastic drawers I have 
+in around five minutes. If the terminators or jumpers are wrong, you can 
+jerk the thing out, and change the jumper in 30 seconds. It's really 
+convenient, Highly Recommended. They have IDE versions of these removable 
+disk drawers, too. I honestly don't understand why all computers don't 
+come with them as original equipment.
+ 
+<P>When installing <A HREF="http://www.microsoft.com/">Microsoft</A> (or 
+anything else, for that matter), I switch off the power to my external 
+SCSI disk. That way, Mickey can't possibly get into my other drive and 
+wreck all the non-Mickey software. Also, Mickey can't get all confused 
+what video resolution I want, or make a database of all the software I'm 
+using, etc.
+ 
+<P>After foolin' around with Win95, I turn off my PC, slide the Win95 
+SCSI out of the bay about an inch, turn on the External SCSI and turn 
+on the PC again. Now I can play with DOS, 
+<A HREF="http://www.mustang.com/">Qmpro</A>, 
+<A HREF="http://home.netscape.com/">Netscape</A>, etc., and 
+Mickey can't break them, or make me run them under Win95!!! It is 
+physically impossible...Yippee!!
+<HR>
+<P>Regular readers of the TPC BBS will recall that on several occasions 
+recently, while messing around with OS/2, my OS/2 software or installation 
+went out and found my Microsoft partition and ate it. On other occasions 
+the Microsoft or Adaptec ASPI8DOS driver somehow got loose and ate my OS/2 
+partition.
+
+<P>Getting tired of having my drives destroyed by these maniacal, 
+antagonistic software companies, I concluded that the only way to run 
+more than one operating system was to keep them on different hardware! 
+(reading the manuals being out of the question of course....)
+ 
+<P>I took the plunge and bought a set of those removeable hard-disk 
+holders from ATTLA in Akihabara. The drive bay was around &#165;4,000 and I 
+also bought a 2nd drive insert for &#165;2,800.
+ 
+<P>Construction of the bay and the drawer appears a bit cheezy. The entire 
+thing is plastic. The interface between the drawer and the drive bay is a 
+Centronics SCSI-I type of connector.
+ 
+<P>When I installed the 1-GB SCSI-II drive it didn't work right, until I 
+put this apparatus at the END of the SCSI chain. Don't even think about 
+putting it in the *middle* of your SCSI chain, because it has several 
+inches of ribbon cable stuffed in it, between the two connectors each 
+mounted on a printed circuit board (one towards the disk and one 
+towards the controller).
+ 
+<P>Anyhow it does seem to be working normally but I am worried about the 
+heat. I left the top and bottom metal covers off the drive drawer in which 
+the SCSI drive is mounted, and it seems to have the same airflow as it 
+would have had before... but it is now up in the 5.25 drive bays 
+sandwiched between a CDROM and another drive—the airflow is nowhere near 
+what it had down in the 3.5 inch drive bays in my tower case.
+ 
+<P>Anyways, it is now physically impossible for the OS/2 system to ever 
+see the Microsoft partition! Whew.... 
+<HR>
+<H2>Using U.S. UPSs in Japan</H2> 
+ 
+<P>There are all kinds of folklore and legends regarding why UPS power 
+supplies from the US burn out prematurely in the Tokyo electrical 
+environment. You already know this:
+<P>
+<TABLE BORDER>
+<TR>
+<TD></TD>
+<TD><B>Voltage</B></TD>
+<TD><B>Frequency</B></TD>
+</TR>
+<TR>
+<TD><B>U.S.</B></TD>
+<TD>120</TD>
+<TD>60Hz</TD>
+</TR>
+<TR>
+<TD><B>Osaka</B></TD>
+<TD>100</TD>
+<TD>60Hz</TD>
+</TR>
+<TR>
+<TD><B>Tokyo</B></TD>
+<TD>100</TD>
+<TD>50Hz</TD>
+</TR>
+</TABLE>
+ 
+<P>For many UPSs, such as American Power Conversion (APC) U.S. model 
+Smart-UPS, the cause of burnouts is NOT the frequency or the voltage. 
+It is the fundamental difference in design of the Tokyo electric grid, 
+and the occurrence of nasty types of voltage spikes.
+ 
+<P>The electric power in Tokyo does not have a connection between the 
+ground side of the 100 Volt plug and the center pin ("Earth ground") on 
+a 3-prong plug. As a result, there can be minor differences in voltage 
+between the ground side of the plug, and the center pin. In fact, when 
+you have a voltage surge, it can create several varieties of voltage 
+differences that do NOT occur during voltage surges in other countries: 
+
+<OL><LI> Differences between the "Hot" power pin on the plug, vs. the center 
+grounding pin, but not the "ground" hot pin, or the "ground" hot pin, but 
+not the center grounding pin ("Normal mode" spikes, EMI, RFI, etc.) 
+<LI> Differences where BOTH power pins on the plug simultaneously spike 
+outside the allowed voltage, when compared with the center earth ground 
+pin ("common mode" spikes) but in different or opposite amounts.</OL>
+
+<P>These voltage differences would not be possible in the US because the 
+neutral pin of the plug is connected to the Ground cable in your fuse box. 
+It is virtually impossible for any big difference to arise between them. 
+(Small differences do arise, in relation to the size of the loads around 
+the building).
+ 
+<P>The UPS has several components for filtering the input power of against 
+spikes, EMI, and RFI (Electromagnetic or Radio Frequency interference). 
+You have to ask yourself, what could any component possibly do, to prevent 
+them?
+ 
+<P>The answer is, the component can either break the circuit 
+instantaneously, for microseconds during the input waveform, or it can 
+attempt to short out for those microseconds, and connect those spikes 
+somehow, to a ground.
+ 
+<P>In either case, the component is in serious danger of destruction and 
+unless you want to pay for HUGE capacity components throughout the UPS 
+which are quite expensive, the engineers need to know the design of the 
+power grid, appropriate ground and other limitations of the environment 
+to size the components and design the circuit properly. 
+
+<P>UPSs in general are very fascinating. In case of power failure, the 
+manual for my UPS says it kicks in within 2 to 3 milliseconds. Since a 
+50Hz wave is 20 milliseconds, that is around 1/10th of a wave. Not bad.
+ 
+<P>In Tokyo, the spikes cannot be drained off to the center grounding 
+pin, which is the usual circuit design in the US model UPS's; thus they 
+can destroy certain parts of the input filtering in the UPS. One 
+component is called a MOV, Metal Oxide Varistor, a neat type of 
+semiconductor which automatically decreases its  resistance very 
+quickly when the voltage exceeds a certain threshold.
+ 
+<P>MOVs are not necessarily expensive; they exist in almost all of the 
+cheap surge-suppressors and are built into many power strips. Good OV's 
+however, need to have high capacities, at least 150 to 200 joules, and 
+*fast* clamping, at *low* voltages. They are less useful, if their 
+threshhold is way up in the hundreds of volts. 
+
+<P>MOVs disintegrate over time. Each surge they are subjected to, changes 
+the electrical qualities of the semiconductor until it eventually fails.
+ 
+<P>Modern PCs and monitors have switching power supplies which build input 
+power for the computer, by switching on and off very instantly during 
+certain parts of the input wave, in order to drain off only the 5 volts or 
+12 volts required. This type of load confuses the heck out of a U.S. model 
+of UPS, when there is no proper ground, because the components in the 
+computer are shunting their waste currents off to the center pin of the 
+power cable, which isn't grounded properly in Japan. Thus the waves travel 
+back thru the UPS thru the fake "ground" pin, and get the input devices 
+all screwed up, in the UPS.
+ 
+<P>But the basic failure mode seems to be this:  
+<OL><LI>Because the design is wrong for Japan, the MOVs are subjected to 
+frequent surges. 
+<LI>The main varistors (or smaller varistors wired in different parts 
+of the circuit to protect against particular types of surges) lose the 
+ability to short a surge to ground.
+<LI>A surge comes along and either it travels into the UPS' hot pin, 
+blasting unprotected components, or, it triggers the main varistors which 
+shunt it to the "earth ground" pin. If the other varistors are dead, which 
+protect against common mode surges, that creates a new surge, which 
+travels along the fake "earth ground" and back up into every livin' 
+component all over the circuit, which expects the ground to be the basis 
+for measuring, shunting excess voltages or whatever.</OL>
+ 
+<P>Our U.S. version Smart-UPS 1250 at the office blew over the New Year 
+holiday, and among other things, the surge travelled into the circuits 
+that control the voltage switching, battery charging, etc. and scrambled 
+the firmware in the ROM chip.
+ 
+<P>What to do: 
+<OL><LI>If you don't have a surge protector, get one, especially if 
+you aren't going to buy a UPS. Research indicates you shouldn't buy one 
+if the specs are not shown, or if the capacity is less than 170 joules.
+<LI>Don't buy a U.S. model surge protector, unless you can ascertain it 
+has the right design for Japanese wiring. Japan does not have a bonded 
+ground.
+<LI>Don't buy a U.S. model UPS, even though they are half the cost.
+<LI>If you already have a U.S. model UPS:</OL>
+ 
+<P>A UPS is particularly vulnerable during the times it is in 
+voltage boost mode. This is a mode when the UPS senses a "Brownout" of 
+maybe 90-95 volts which is not uncommon in Tokyo, and kicks in special 
+circuits to increase the voltage supply to your computer or server. 
+For this reason, and because of the additional protection against very 
+quick spikes, your U.S. Model UPS will last longer if it has a step-up 
+transformer in front of it.
+ 
+<P>Get a high quality surge protector designed for Japan, in front of 
+your UPS. Expect to pay at least &#165;15,000 or more.
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>February 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc.html">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>

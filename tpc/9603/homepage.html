@@ -1,0 +1,309 @@
+<HTML>
+<HEAD>
+<TITLE>Home Page in 10 Minutes</TITLE>
+<LINK REV="made" HREF="mailto:paulcipy@gol.com">
+</HEAD>
+<BODY>
+<H1>How to Make Your Home Page in 10 Minutes</H1>
+<P>
+</P>
+<H2>by <A HREF="http://www.factcomm.co.jp/fact/staff/darren/ehome.html">Darren Cook</A></H2>
+<HR>
+<P>HTML, which stands for HyperText Markup Language, is the set of format 
+instructions for the World Wide Web.  Many people seem to think that it 
+is complicated, something that needs one of those 1,000-page 
+books to learn.</P> 
+ 
+<P>This article is hopefully going to show you how easy it is.  Not only can 
+you make your home page in ten minutes, but you will also not need any 
+special tools.  We are going to use Notepad.  You cannot get much 
+simpler than that.</P> 
+ 
+<P>There are lots of special editors for HTML, as well as an add-on for 
+<A HREF="http://www.microsoft.com/">Microsoft Word</A>, but my argument 
+is that as this is only going to take ten minutes, you will have written 
+your web page by the time you have installed those other systems, and 
+by the time you have learnt how to use them and are just creating your 
+first page, you will already have made a suite of pages, all 
+inter-linked, telling the world about you, your philosophy and 
+interesting anecdotes about your friends and family.</P> 
+ 
+<P>Also, more importantly, when you want to get clever and stretch the 
+boundaries of HTML, then you will probably have to do it this way anyway.</P> 
+ 
+<P>There are some catches. To do this in ten minutes, you have to:</P> 
+
+   <OL><LI>Already have the picture(s) you want to use on the page, and they 
+  need to be in GIF or JPEG format.  Lots of public domain programs let 
+  you do this.  Of course, you can have a home page without pictures.	
+  
+   <LI>If you want to provide some links from your page, you must already 
+   have the &quot;HTTP://...&quot; addresses scribbled down somewhere.  Of course, 
+   you can have a home page with no links. 
+   
+   <LI>To view your masterpiece, and check it looks okay, you will need a 
+   browser.  I recommend <A HREF="http://home.netscape.com/">Netscape</A>, 
+   but Mosaic, etc., will do.  Tip: buy at least one copy of the 
+   Japanese magazine called &quot;Internet&quot;, as the 
+   CD that comes with it has a comprehensive selection of Internet 
+   software for Windows, Mac and UNIX.  
+  
+   <LI>You must already have an idea what you want to write.  This is the 
+   tricky bit.  But here is a valuable idea (brace yourself), used on 
+   the majority of web pages I have seen: write anything, do not worry 
+   about whether it is good or bad, two sentences or twenty paragraphs, 
+   and then at the top of the page put &quot;THIS PAGE IS UNDER
+   CONSTRUCTION&quot;.</OL>
+ 
+<P>You will not need to be on the Internet while you develop your 
+page. Learn offline, until NTT see the error of their ways, and 
+provide the telephone service at sensible rates.  See STEP NINE, and 
+the information box on starting Netscape, for details.</P> 
+ 
+<P><B>STEP ONE:</B> Start Windows then start File Manager, and make a new 
+directory called HOMEPAGE in C:\.  (Can be anywhere, can be called 
+anything).  TIME BUDGET: 60 seconds.</P> 
+ 
+<P><B>STEP TWO:</B> Start Notepad (called ME-MO-SHI on Japanese systems).  It 
+is normally in the Accessories group in Program Manager.  I always 
+move it to the the Main group, as it so useful.  TIME BUDGET: 20 
+seconds.</P> 
+ 
+<P><B>STEP THREE:</B> Okay here is some theory.  The layout information in 
+HTML is done with &quot;tags&quot;.  These are command words that start with 
+the <B>&lt;</B> symbol and end with the <B>&gt;</B> symbol.  The 
+<B>&lt;</B>, <B>&gt;</B> and everything between them will not 
+appear on the web page.</P> 
+
+<P>Type the following text into Notepad.  There are lots of tags here, 
+and most of them are overhead - you will have to type this junk into 
+every page you write:</P> 
+ 
+<B>&lt;html&gt;</B><BR> 
+<B>&lt;head&gt;</B><BR> 
+<B>&lt;title&gt;MY FIRST HOME PAGE&lt;/title&gt;</B><BR> 
+<B>&lt;/head&gt;</B><BR> 
+<B>&lt;body&gt;</B><BR> 
+<P></P> 
+ 
+<B>&lt;/body&gt;&lt;/html&gt;</B><BR> 
+ 
+<P>The tags can be lower-case, upper-case or a mixture.  You can spread 
+the lines out more, or squeeze it all on to one line — the browser 
+will ignore blank lines and tabs.  Spelling is important, as is the 
+initial forward slash (/) character at the start of three of the tags.</P> 
+ 
+<P>More theory: Some tags comes in pairs, the first one is the command 
+name, e.g.,. &lt;title&gt; while the end one has the same tag name 
+but with that &quot;/&quot; character, e.g., &lt;/title&gt;.  What this means 
+is that everything between the start and end tag is affected by 
+that tag.  In this case it means that MY FIRST HOME PAGE is the 
+title of this web page.  What that means is that when you load it 
+into your browser, &quot;MY FIRST HOME PAGE&quot; will appear in the title bar.  
+TIME BUDGET: 1 minute, 40 seconds.</P> 
+ 
+<P><B>STEP FOUR:</B> We left a blank line between &lt;body&gt; and &lt;/body&gt; 
+and this is where your text goes. In other words the 
+&lt;/body&gt;&lt;/html&gt; line is always the last line in the file.</P> 
+ 
+<P>So, move the cursor to that blank line, and type in these lines:</P> 
+<P><B>&lt;h1&gt;MY TEN-MINUTE HOME PAGE!&lt;/h1&gt;Hello my name is Darren. Thank you 
+for coming to my page. Please note that it is still UNDER CONSTRUCTION. 
+&lt;br&gt;I am going to tell you all about the meaning of life in a moment, 
+but first I want to show you a picture:</B></P> 
+ 
+<P>Three new tags to learn: &lt;h1&gt; ...  &lt;/h1&gt;. This starts and stops 
+a big heading (it is a ONE after the &quot;h&quot;).  The browser will 
+automatically start a new line after a heading.  However, since 
+normally the browser ignores your carriage returns, blank lines and 
+tabs, we have to use a tag to tell it when we want it to start a new 
+line.  I use &lt;br&gt;.  There is no closing tag to worry about.  (The 
+books may suggest you use &lt;p&gt; — in this case they both do the 
+same thing).  TIME BUDGET: 2 minutes.</P> 
+ 
+<P><B>STEP FIVE:</B> We are halfway—five minutes down, five to go.  If I am 
+going too quickly for you, sorry, but this is as slow as I get.  Just 
+type for the moment, think later.</P> 
+ 
+<P>Now let's add a picture.  First you need to put the GIF file in 
+c:\HOMEPAGE (or whatever directory you created earlier).  Use File 
+Manager to do this.</P> 
+
+<P>For this example I am going to assume your GIF file is called 
+&quot;FACE.GIF&quot;.  I am giving you a whole minute to find your GIF file, 
+and put it in c:\homepage.  Uncharacteristic generosity.  
+TIME BUDGET: 60 seconds.</P> 
+ 
+<P><B>STEP SIX:</B> Now directly under what we wrote in STEP FOUR, type this:</P> 
+ 
+<P><B>&lt;img src=&quot;face.gif&quot;&gt;</B></P> 
+ 
+<P>That is it!  One line!  I told you this was going to be easy.  It 
+is just one tag (when you play around later, try putting a 
+&lt;br&gt; just before it, to get it on a line of its own).  It 
+starts &quot;img&quot; which stands for image.  Then a space, then &quot;src&quot; 
+(which stands for source) an equals sign, and then the filename in 
+quotation marks.  Finally the &quot;&gt;&quot; to close the tag.  HTML is 
+easy-going on upper and lower case, carriage-returns, etc. but is 
+very fussy about closing your tags.  TIME BUDGET: 30 seconds.</P> 
+ 
+<P><B>STEP SEVEN:</B> Almost forgot!  We had better save our file!  Go to 
+FILE menu in Notepad, and click SAVE AS.  Move into c:\HOMEPAGE, 
+and then for the filename type this: HOME.HTM.  Click OK to save 
+it.</P> 
+
+<P>Important Tip: When you move it on to your Internet Provider, so 
+that the world can see it, chances are that you will need to 
+rename it to &quot;HOME.HTML&quot;.</P> 
+ 
+<P>Those of you using <A HREF="http://www.microsoft.com/windows/">Windows 95</A> 
+or NT, can call it HOME.HTML right 
+from the beginning of course.  TIME BUDGET: 45 seconds.</P> 
+ 
+<P><B>STEP EIGHT:</B> Now let's add a link!  Type this text in:</P> 
+ 
+<B>&lt;br&gt;</B><BR> 
+<B>&lt;br&gt;</B><BR> 
+<B>&lt;a HREF=&quot;http://www.factcomm.co.jp/</B><BR>
+<B>fact/staff/darren/ehome.html&quot;&gt;Go and see Darren!&lt;/a&gt;</B><BR> 
+ 
+ 
+<P>In the unlikely event that you want to provide a link to my home 
+page you can type this in as it stands.  Otherwise you will want 
+to replace the http:// address.</P> 
+ 
+<P>We give &lt;br&gt; twice.  This will leave an extra blank line after 
+the image (Advanced Tip: this is why I prefer to use &lt;br&gt; 
+instead of &lt;p&gt;, because however many &lt;p&gt;'s in a row you have, 
+it will only give one blank line).</P> 
+ 
+<P>Next we have &lt;a&gt;Some text&lt;/a&gt; (I split it over 3 lines 
+above, to make it easier to read).</P> 
+ 
+<P>The &lt;a&gt; (it stands for anchor) starts the link, and the 
+&lt;/a&gt; closes the link.  The text in the middle is what 
+will appear on the home page, in blue (by default).  When this blue 
+text is clicked it will jump to another web page whether that page 
+is another one you have written, or written by someone else and 
+residing on a computer on the other side of the world (Cor... just 
+like magic!).</P> 
+ 
+<P>We tell it where to go by putting some extra stuff inside the 
+first &lt;a&gt; tag.  It starts HREF= (just as &lt;a&gt; stands for 
+&quot;anchor&quot;, HREF stands for the equally intuitive &quot;Hypertext 
+Reference&quot;) and is then followed by the http:// address in 
+quotation marks.  And of course you must remember to put not only 
+the closing quotation marks at the end, but then also the &quot;&gt;&quot; 
+to close the tag.</P> 
+ 
+<P>The other thing to be careful of is to give the HTTP address 
+exactly.  If it is wrong then your page will still look correct, 
+but anyone clicking it will get that wonderfully techie message 
+&quot;URL NOT FOUND&quot;.</P> 
+ 
+<P>(Advanced Tip: If you are linking to another page that you have 
+written, that is in the same directory, there is a very simple 
+shortcut: you only need to give the filename,e.g.,. &lt;a 
+HREF=&quot;jhome.html&quot;&gt;Japanese version here&lt;/a&gt;).  
+TIME BUDGET: 75 seconds.</P> 
+ 
+<P><B>STEP NINE:</B> We have one and a half minutes left, and we are finished!  
+Just time to test it!  Save your file, and without closing down 
+Notepad, start Netscape (or whatever browser you are using).  See 
+the information box on starting Netscape without the expense of going 
+online.</P> 
+ 
+<P>In Netscape, go to FILE menu, and choose &quot;Open File&quot;.  It brings up 
+the usual windows dialog box.  Go to c:\HOMEPAGE directory, and you 
+should see HOME.HTM listed.  Double click it, and the page we just 
+typed in should be there, with the image and the link.</P> 
+ 
+<P>The link will not work unless you are online of course (if you 
+try it, it will think for a while and then say no DNS entry or some 
+similar error).</P> 
+ 
+<P>Go back to Notepad.  Type something new at the end.  &quot;This is a test&quot; 
+is always popular.  Save the file again.  Now go back to Netscape and 
+click Reload.  Hopefully, your new text will appear.  This can give you 
+a quick way of developing, as you can see your changes almost instantly.</P> 
+ 
+<P>To learn more HTML either buy one of those books, or whenever you 
+visit someone's page, and you want to do what they do, most browsers 
+will let you look at the source.  Learn from them.  The dishonest 
+among you can simply cut the good bit from their page, paste it into 
+your own page, and make a few cosmetic changes.  TIME BUDGET: 
+90 seconds (not counting the time to set your browser up).</P> 
+ 
+<H3>Tag Summary:</H3>
+<TABLE BORDER=>
+<TR>
+<TD>&lt;html&gt;</TD>
+<TD>First tag in file</TD>
+</TR>
+<TR>
+<TD>&lt;/html&gt;</TD>
+<TD>Last tag in file</TD>
+</TR>
+<TR>
+<TD>&lt;head&gt;...&lt;/head&gt;</TD>
+<TD>Enclose the head section</TD>
+</TR>
+<TR>
+<TD>&lt;title&gt;...&lt;/title&gt;</TD>
+<TD>Enclose the title of the page</TD>
+</TR>
+<TR>
+<TD>&lt;body&gt;</TD>
+<TD>Starts the content of your page</TD>
+</TR>
+<TR>
+<TD>&lt;/body&lt;</TD>
+<TD>Ends your page (just before &lt;/html&gt;)</TD>
+</TR>
+<TR>
+<TD>&lt;h1&gt;...&lt;/h1&gt;</TD>
+<TD>Enclose a large heading</TD>
+</TR>
+<TR>
+<TD>&lt;br&gt;</TD>
+<TD>Start a new line</TD>
+</TR>
+<TR>
+<TD>&lt;img src=&quot;xxx.gif&quot;&gt;</TD>
+<TD>Show image xxx.gif</TD>
+</TR>
+<TR>
+<TD>&lt;a HREF=&quot;xxx.html&quot;&gt;...&lt;/a&gt;</TD>
+<TD>A link to xxx.html in the same directory</TD>
+</TR>
+<TR>
+<TD>&lt;a HREF=&quot;http://server.name/directory/xxx.html&quot;&gt;...&lt;/a&gt;</TD>
+<TD>A link to xxx.html on another computer</TD>
+</TR>
+</TABLE>
+<H3>Using Netscape Offline:</H3>
+ 
+<P>Netscape (under Windows 3.X) wants to have Winsock running, which 
+normally means you need to dial up to an Internet provider.  While 
+Winsock is dialing, simply hit &lt;esc&gt; to abort the logon, and 
+Winsock and Netscape will continue to load, and will run offline 
+with no trouble.</P> 
+ 
+<HR>
+<H5>&#169; Algorithmica Japonica Copyright Notice: Copyright of material 
+rests with the individual author. Articles may be reprinted by other user 
+groups if the author and original publication are credited. Any other 
+reproduction or use of material herein is prohibited without prior written 
+permission from TPC. The mention of names of products without indication 
+of Trademark or Registered Trademark status in no way implies that these 
+products are not so protected by law.</H5> 
+<HR SIZE="4">
+<CENTER>
+<P><B>Algorithmica Japonica</B></P>
+<P>March 1996</P>
+<P><B>The Newsletter of the
+<A HREF="http://shrine.cyber.ad.jp/~jwt/tpc.html">Tokyo PC Users Group</A></B></P>
+<P>Submissions : Editor 
+<A HREF="mailto:mike.lloret@tokyopc.bbs.net">Mike Lloret</A></P>
+</CENTER>
+</BODY></HTML>
